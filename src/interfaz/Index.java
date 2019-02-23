@@ -5,17 +5,72 @@
  */
 package interfaz;
 
+import java.awt.Point;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import recursos.modelo.Mision;
+import recursos.modelo.Nave;
+import recursos.modelo.Tripulante;
+import recursos.modelo.Cuaderno;
+import recursos.modelo.Usuario;
+import recursos.dao.NaveDAO;
+import recursos.dao.TripulanteDAO;
+import recursos.dao.MisionDAO;
+import recursos.dao.CuadernoDAO;
+
 /**
  *
- * @author alvaro.santos
+ * @author Álvaro Santos
  */
 public class Index extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Index
-     */
+    Usuario usuario = new Usuario();
+
     public Index() {
         initComponents();
+        cerrarPaneles();
+    }
+
+    public void cerrarPaneles() {
+        panelNave.setVisible(false);
+        panelTripulante.setVisible(false);
+        panelMision.setVisible(false);
+        panelCuaderno.setVisible(false);
+        panelCerrarSesion.setVisible(false);
+        panelRegistrarNave.setVisible(false);
+        panelRegistrarTripulante.setVisible(false);
+        panelRegistrarMision.setVisible(false);
+        panelRegistrarCuaderno.setVisible(false);
+        panelVerNave.setVisible(false);
+        panelVerTripulante.setVisible(false);
+        panelVerMision.setVisible(false);
+        panelVerCuaderno.setVisible(false);
+        panelEliminarNave.setVisible(false);
+        panelEliminarTripulante.setVisible(false);
+        panelEliminarMision.setVisible(false);
+        panelEliminarCuaderno.setVisible(false);
+        panelActualizarNave.setVisible(false);
+        panelActualizarTripulante.setVisible(false);
+        panelActualizarMision.setVisible(false);
+        panelActualizarCuaderno.setVisible(false);
+    }
+
+    public void bloquearBotones() {
+        btnNave.setEnabled(false);
+        btnTripulante.setEnabled(false);
+        btnMision.setEnabled(false);
+        btnCuaderno.setEnabled(false);
+    }
+
+    public void activarBotones() {
+        btnNave.setEnabled(true);
+        btnTripulante.setEnabled(true);
+        btnMision.setEnabled(true);
+        btnCuaderno.setEnabled(true);
     }
 
     /**
@@ -41,28 +96,194 @@ public class Index extends javax.swing.JFrame {
         iconEscuela = new javax.swing.JLabel();
         iconTrabajo = new javax.swing.JLabel();
         panelCentro = new javax.swing.JPanel();
-        subPanelUsuario = new javax.swing.JPanel();
-        btnCerrarSesion = new javax.swing.JButton();
-        subPanelNave = new javax.swing.JPanel();
-        btnSubAnadirNave = new javax.swing.JButton();
-        btnSubListarNave = new javax.swing.JButton();
-        btnSubActualizarNave = new javax.swing.JButton();
-        btnSubEliminarNave = new javax.swing.JButton();
-        subPanelTripulante = new javax.swing.JPanel();
-        btnSubAnadirTripulante = new javax.swing.JButton();
-        btnSubListarTripulante = new javax.swing.JButton();
-        btnSubActualizarTripulante = new javax.swing.JButton();
-        btnSubEliminarTripulante = new javax.swing.JButton();
-        subPanelMision = new javax.swing.JPanel();
-        btnSubAnadirMision = new javax.swing.JButton();
-        btnSubListarMision = new javax.swing.JButton();
-        btnSubActualizarMision = new javax.swing.JButton();
-        btnSubEliminarMision = new javax.swing.JButton();
-        subPanelCuaderno = new javax.swing.JPanel();
-        btnSubAnadirCuaderno = new javax.swing.JButton();
-        btnSubListarCuaderno = new javax.swing.JButton();
-        btnSubActualizarCuaderno = new javax.swing.JButton();
-        btnSubEliminarCuaderno = new javax.swing.JButton();
+        panelUsuarios = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtNombreNuevo = new javax.swing.JTextField();
+        txtUsuarioNuevo = new javax.swing.JTextField();
+        txtPassNuevo = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
+        btnRegistrarUsuario = new javax.swing.JButton();
+        txtPass = new javax.swing.JPasswordField();
+        panelRegistrarNave = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        btnSalirRegistroNave = new javax.swing.JButton();
+        txtCapitanNave = new javax.swing.JTextField();
+        txtNombreNave = new javax.swing.JTextField();
+        txtMatriculaNave = new javax.swing.JTextField();
+        txtTipoNave = new javax.swing.JTextField();
+        btnRegistrarNave = new javax.swing.JButton();
+        panelRegistrarTripulante = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        btnSalirRegistroTripulante = new javax.swing.JButton();
+        txtNombreTripulante = new javax.swing.JTextField();
+        txtGeneroTripulante = new javax.swing.JTextField();
+        txtOrigenTripulante = new javax.swing.JTextField();
+        txtTipoTripulante = new javax.swing.JTextField();
+        btnRegistrarTripulante = new javax.swing.JButton();
+        txtCargoTripulante = new javax.swing.JTextField();
+        txtExperienciaTripulante = new javax.swing.JTextField();
+        txtRazaTripulante = new javax.swing.JTextField();
+        comboNaveTripulante = new javax.swing.JComboBox<>();
+        panelRegistrarMision = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btnSalirRegistroMision = new javax.swing.JButton();
+        txtNombreMision = new javax.swing.JTextField();
+        btnRegistrarMision = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcionMision = new javax.swing.JTextArea();
+        comboNaveMision = new javax.swing.JComboBox<>();
+        panelRegistrarCuaderno = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        btnSalirRegistroCuaderno = new javax.swing.JButton();
+        btnRegistrarCuaderno = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescripcionCuaderno = new javax.swing.JTextArea();
+        comboNaveCuaderno = new javax.swing.JComboBox<>();
+        txtFechaCuaderno = new javax.swing.JTextField();
+        txtAudioCuaderno = new javax.swing.JTextField();
+        panelNave = new javax.swing.JPanel();
+        btnEliminarNave = new javax.swing.JButton();
+        btnAñadirNave = new javax.swing.JButton();
+        btnVerNave = new javax.swing.JButton();
+        btnActualizarNave = new javax.swing.JButton();
+        panelTripulante = new javax.swing.JPanel();
+        btnEliminarTripulante = new javax.swing.JButton();
+        btnAñadirTripulante = new javax.swing.JButton();
+        btnVerTripulante = new javax.swing.JButton();
+        btnActualizarTripulante = new javax.swing.JButton();
+        panelMision = new javax.swing.JPanel();
+        btnEliminarMision = new javax.swing.JButton();
+        btnAñadirMision = new javax.swing.JButton();
+        btnVerMision = new javax.swing.JButton();
+        btnActualizarMision = new javax.swing.JButton();
+        panelCuaderno = new javax.swing.JPanel();
+        btnEliminarCuaderno = new javax.swing.JButton();
+        btnAñadirCuaderno = new javax.swing.JButton();
+        btnVerCuaderno = new javax.swing.JButton();
+        btnActualizarCuaderno = new javax.swing.JButton();
+        panelCerrarSesion = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        panelVerNave = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        benSalirRegistroTripulante1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableListaNaves = new javax.swing.JTable();
+        panelVerTripulante = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        btnSalirListadoTripulante = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableListaTripulante = new javax.swing.JTable();
+        panelVerMision = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        benSalirRegistroTripulante3 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableListaMision = new javax.swing.JTable();
+        panelVerCuaderno = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        benSalirRegistroTripulante4 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableListaCuaderno = new javax.swing.JTable();
+        panelEliminarNave = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        benSalirEliminarNaveRegistrada = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tableEliminarNaveRegistrada = new javax.swing.JTable();
+        btnEliminarNaveRegistrada = new javax.swing.JButton();
+        panelEliminarTripulante = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        btnSalirEliminarTripulanteRegistrado = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tableEliminarTripulanteRegistrado = new javax.swing.JTable();
+        btnEliminarTripulanteRegistrado = new javax.swing.JButton();
+        panelEliminarMision = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        btnSalirEliminarMisionRegistrada = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tableEliminarMisionRegistrada = new javax.swing.JTable();
+        btnEliminaMisionRegistrada = new javax.swing.JButton();
+        panelEliminarCuaderno = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        btnSalirEliminarCuadernoRegistrado = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tableEliminarCuadernoRegistrado = new javax.swing.JTable();
+        btnEliminaCuadernoRegistrado = new javax.swing.JButton();
+        panelActualizarNave = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        btnSalirActualizarNave = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tableActualizarNaveRegistrada = new javax.swing.JTable();
+        btnActualizarNaveRegistrada = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txtCapitanSeleccionado = new javax.swing.JTextField();
+        txtNombreSeleccionado = new javax.swing.JTextField();
+        txtMatriculaSeleccionado = new javax.swing.JTextField();
+        txtTipoSeleccionado = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtIdNaveSeleccionada = new javax.swing.JTextField();
+        panelActualizarTripulante = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        btnSalirActualizarNave1 = new javax.swing.JButton();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tableActualizarTripulanteRegistrado = new javax.swing.JTable();
+        btnActualizaTripulanteRegistrado = new javax.swing.JButton();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        txtIdTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        txtNombreTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        txtCargoTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        txtGeneroTripulanteSeleccionado = new javax.swing.JTextField();
+        txtExperienciaTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        txtOrigenTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        txtRazaTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        txtEdadTripulanteSeleccionado = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        comboIdNaveTripulanteSeleccionado = new javax.swing.JComboBox<>();
+        panelActualizarMision = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        btnSalirActualizarMision = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        tableActualizarMisiónRegistrada = new javax.swing.JTable();
+        btnActualizarMisionRegistrada = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        txtNombreMisionSeleccionado = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        txtIdMisionSeleccionada = new javax.swing.JTextField();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        txtDescripcionMisionSeleccionada = new javax.swing.JTextArea();
+        comboNaveMisionSeleccionada = new javax.swing.JComboBox<>();
+        panelActualizarCuaderno = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        btnSalirActualizarCuaderno = new javax.swing.JButton();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        tableActualizarCuadernoRegistrado = new javax.swing.JTable();
+        btnActualizarCuadernoRegistrado = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        txtFechaCuadernoSeleccionada = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        txtIdCuadernoRegistrado = new javax.swing.JTextField();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        txtDescripcionCuadernoSeleccionado = new javax.swing.JTextArea();
+        comboNaveCuadernoSeleccionado = new javax.swing.JComboBox<>();
+        txtAudioCuadernoSeleccionado = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flota Estelar DE V3");
@@ -191,189 +412,2151 @@ public class Index extends javax.swing.JFrame {
         panelCentro.setPreferredSize(new java.awt.Dimension(1250, 568));
         panelCentro.setLayout(null);
 
-        btnCerrarSesion.setText("Cerrar sesión");
-        btnCerrarSesion.setContentAreaFilled(false);
-        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        panelUsuarios.setBackground(new java.awt.Color(250, 250, 250));
 
-        javax.swing.GroupLayout subPanelUsuarioLayout = new javax.swing.GroupLayout(subPanelUsuario);
-        subPanelUsuario.setLayout(subPanelUsuarioLayout);
-        subPanelUsuarioLayout.setHorizontalGroup(
-            subPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelUsuarioLayout.createSequentialGroup()
+        jLabel6.setFont(new java.awt.Font("Euphemia", 0, 22)); // NOI18N
+        jLabel6.setText("¿Eres nuevo?");
+
+        txtNombreNuevo.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        txtNombreNuevo.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombreNuevo.setText(" Tu nombre *");
+        txtNombreNuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        txtUsuarioNuevo.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        txtUsuarioNuevo.setForeground(new java.awt.Color(153, 153, 153));
+        txtUsuarioNuevo.setText(" Tu nombre de usuario *");
+        txtUsuarioNuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtUsuarioNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioNuevoActionPerformed(evt);
+            }
+        });
+
+        txtPassNuevo.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        txtPassNuevo.setForeground(new java.awt.Color(153, 153, 153));
+        txtPassNuevo.setText(" Tu contraseña *");
+        txtPassNuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        txtUser.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(153, 153, 153));
+        txtUser.setText(" Tu nombre de usuario *");
+        txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        jLabel3.setFont(new java.awt.Font("Euphemia", 0, 22)); // NOI18N
+        jLabel3.setText("Entrar en mi cuenta");
+
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton2.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(250, 250, 250));
+        jButton2.setText("Registrar");
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+
+        btnLogin.setBackground(new java.awt.Color(102, 102, 102));
+        btnLogin.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(250, 250, 250));
+        btnLogin.setText("Login");
+        btnLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnLogin.setBorderPainted(false);
+        btnLogin.setContentAreaFilled(false);
+        btnLogin.setOpaque(true);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarUsuario.setBackground(new java.awt.Color(102, 102, 102));
+        btnRegistrarUsuario.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnRegistrarUsuario.setForeground(new java.awt.Color(250, 250, 250));
+        btnRegistrarUsuario.setText("Registrar");
+        btnRegistrarUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnRegistrarUsuario.setBorderPainted(false);
+        btnRegistrarUsuario.setContentAreaFilled(false);
+        btnRegistrarUsuario.setOpaque(true);
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarUsuarioActionPerformed(evt);
+            }
+        });
+
+        txtPass.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        txtPass.setForeground(new java.awt.Color(153, 153, 153));
+        txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
+        panelUsuarios.setLayout(panelUsuariosLayout);
+        panelUsuariosLayout.setHorizontalGroup(
+            panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6)
+                        .addComponent(txtUsuarioNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                        .addComponent(txtNombreNuevo)
+                        .addComponent(txtPassNuevo))
+                    .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                    .addComponent(txtPass))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        panelUsuariosLayout.setVerticalGroup(
+            panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUsuarioNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPassNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelUsuarios);
+        panelUsuarios.setBounds(100, 110, 1040, 330);
+
+        panelRegistrarNave.setBackground(new java.awt.Color(250, 250, 250));
+
+        jLabel4.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel4.setText("Registrar Nave");
+
+        btnSalirRegistroNave.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroNave.setContentAreaFilled(false);
+        btnSalirRegistroNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirRegistroNaveActionPerformed(evt);
+            }
+        });
+
+        txtCapitanNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtCapitanNave.setForeground(new java.awt.Color(102, 102, 102));
+        txtCapitanNave.setText("  Capitán de la Nave *");
+
+        txtNombreNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtNombreNave.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombreNave.setText("  Nombre de la Nave *");
+
+        txtMatriculaNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtMatriculaNave.setForeground(new java.awt.Color(102, 102, 102));
+        txtMatriculaNave.setText("  Matrícula de la Nave *");
+
+        txtTipoNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtTipoNave.setForeground(new java.awt.Color(102, 102, 102));
+        txtTipoNave.setText("  Tipo de la nave *");
+
+        btnRegistrarNave.setBackground(new java.awt.Color(113, 113, 113));
+        btnRegistrarNave.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnRegistrarNave.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarNave.setText("Registrar");
+        btnRegistrarNave.setContentAreaFilled(false);
+        btnRegistrarNave.setOpaque(true);
+        btnRegistrarNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarNaveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRegistrarNaveLayout = new javax.swing.GroupLayout(panelRegistrarNave);
+        panelRegistrarNave.setLayout(panelRegistrarNaveLayout);
+        panelRegistrarNaveLayout.setHorizontalGroup(
+            panelRegistrarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarNaveLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(panelRegistrarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRegistrarNaveLayout.createSequentialGroup()
+                        .addComponent(btnRegistrarNave, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelRegistrarNaveLayout.createSequentialGroup()
+                        .addGroup(panelRegistrarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTipoNave)
+                            .addComponent(txtMatriculaNave)
+                            .addComponent(txtNombreNave)
+                            .addComponent(txtCapitanNave, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRegistrarNaveLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
+                                .addComponent(btnSalirRegistroNave, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40))))
+        );
+        panelRegistrarNaveLayout.setVerticalGroup(
+            panelRegistrarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarNaveLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelRegistrarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(btnSalirRegistroNave))
+                .addGap(29, 29, 29)
+                .addComponent(txtCapitanNave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtNombreNave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtMatriculaNave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTipoNave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarNave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelRegistrarNave);
+        panelRegistrarNave.setBounds(300, 50, 600, 470);
+
+        panelRegistrarTripulante.setBackground(new java.awt.Color(250, 250, 250));
+        panelRegistrarTripulante.setMaximumSize(new java.awt.Dimension(1200, 410));
+        panelRegistrarTripulante.setMinimumSize(new java.awt.Dimension(1200, 410));
+
+        jLabel5.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel5.setText("Registrar un nuevo tripulante");
+
+        btnSalirRegistroTripulante.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroTripulante.setContentAreaFilled(false);
+        btnSalirRegistroTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirRegistroTripulanteActionPerformed(evt);
+            }
+        });
+
+        txtNombreTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtNombreTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombreTripulante.setText("  Nombre del tripulante *");
+
+        txtGeneroTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtGeneroTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtGeneroTripulante.setText("  Género del tripulante *");
+
+        txtOrigenTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtOrigenTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtOrigenTripulante.setText("  Origen del tripulante *");
+
+        txtTipoTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtTipoTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtTipoTripulante.setText("  Edad del tripulante *");
+
+        btnRegistrarTripulante.setBackground(new java.awt.Color(113, 113, 113));
+        btnRegistrarTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnRegistrarTripulante.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarTripulante.setText("Registrar");
+        btnRegistrarTripulante.setContentAreaFilled(false);
+        btnRegistrarTripulante.setOpaque(true);
+        btnRegistrarTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarTripulanteActionPerformed(evt);
+            }
+        });
+
+        txtCargoTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtCargoTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtCargoTripulante.setText("  Cargo del tripulante *");
+
+        txtExperienciaTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtExperienciaTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtExperienciaTripulante.setText("  Experiencia del tripulante *");
+
+        txtRazaTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtRazaTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        txtRazaTripulante.setText("  Raza del tripulante *");
+
+        comboNaveTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        comboNaveTripulante.setForeground(new java.awt.Color(112, 112, 112));
+        comboNaveTripulante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona el ID de la nave *" }));
+        comboNaveTripulante.setDoubleBuffered(true);
+        comboNaveTripulante.setOpaque(false);
+        comboNaveTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboNaveTripulanteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRegistrarTripulanteLayout = new javax.swing.GroupLayout(panelRegistrarTripulante);
+        panelRegistrarTripulante.setLayout(panelRegistrarTripulanteLayout);
+        panelRegistrarTripulanteLayout.setHorizontalGroup(
+            panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                        .addComponent(btnRegistrarTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                        .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalirRegistroTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRegistrarTripulanteLayout.createSequentialGroup()
+                                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRegistrarTripulanteLayout.createSequentialGroup()
+                                        .addComponent(txtGeneroTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtExperienciaTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRegistrarTripulanteLayout.createSequentialGroup()
+                                        .addComponent(txtNombreTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCargoTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 4, Short.MAX_VALUE)))
+                        .addGap(31, 31, 31))
+                    .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                        .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                                .addComponent(txtTipoTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboNaveTripulante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                                .addComponent(txtOrigenTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRazaTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        panelRegistrarTripulanteLayout.setVerticalGroup(
+            panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarTripulanteLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(btnSalirRegistroTripulante))
+                .addGap(29, 29, 29)
+                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombreTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCargoTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtGeneroTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtExperienciaTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrigenTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRazaTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelRegistrarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboNaveTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(txtTipoTripulante))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelRegistrarTripulante);
+        panelRegistrarTripulante.setBounds(28, 70, 1200, 410);
+
+        panelRegistrarMision.setBackground(new java.awt.Color(250, 250, 250));
+
+        jLabel7.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel7.setText("Registrar una nueva misión");
+
+        btnSalirRegistroMision.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroMision.setContentAreaFilled(false);
+        btnSalirRegistroMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirRegistroMisionActionPerformed(evt);
+            }
+        });
+
+        txtNombreMision.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtNombreMision.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombreMision.setText("  Nombre de la misión *");
+
+        btnRegistrarMision.setBackground(new java.awt.Color(113, 113, 113));
+        btnRegistrarMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnRegistrarMision.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarMision.setText("Registrar");
+        btnRegistrarMision.setContentAreaFilled(false);
+        btnRegistrarMision.setOpaque(true);
+        btnRegistrarMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarMisionActionPerformed(evt);
+            }
+        });
+
+        txtDescripcionMision.setColumns(20);
+        txtDescripcionMision.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtDescripcionMision.setForeground(new java.awt.Color(112, 112, 112));
+        txtDescripcionMision.setRows(5);
+        txtDescripcionMision.setText("  Introduce aquí una breve descripción de la misión *\n");
+        jScrollPane1.setViewportView(txtDescripcionMision);
+
+        comboNaveMision.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        comboNaveMision.setForeground(new java.awt.Color(112, 112, 112));
+        comboNaveMision.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona el ID de la nave *" }));
+        comboNaveMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboNaveMisionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRegistrarMisionLayout = new javax.swing.GroupLayout(panelRegistrarMision);
+        panelRegistrarMision.setLayout(panelRegistrarMisionLayout);
+        panelRegistrarMisionLayout.setHorizontalGroup(
+            panelRegistrarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarMisionLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(panelRegistrarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRegistrarMisionLayout.createSequentialGroup()
+                        .addComponent(btnRegistrarMision, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarMisionLayout.createSequentialGroup()
+                        .addGroup(panelRegistrarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(comboNaveMision, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreMision, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRegistrarMisionLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                                .addComponent(btnSalirRegistroMision, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40))))
+        );
+        panelRegistrarMisionLayout.setVerticalGroup(
+            panelRegistrarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarMisionLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelRegistrarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(btnSalirRegistroMision))
+                .addGap(29, 29, 29)
+                .addComponent(txtNombreMision, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(comboNaveMision, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarMision, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+
+        panelCentro.add(panelRegistrarMision);
+        panelRegistrarMision.setBounds(350, 50, 600, 470);
+
+        panelRegistrarCuaderno.setBackground(new java.awt.Color(250, 250, 250));
+
+        jLabel8.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel8.setText("Registrar un nuevo cuaderno");
+
+        btnSalirRegistroCuaderno.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroCuaderno.setContentAreaFilled(false);
+        btnSalirRegistroCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirRegistroCuadernoActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarCuaderno.setBackground(new java.awt.Color(113, 113, 113));
+        btnRegistrarCuaderno.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnRegistrarCuaderno.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarCuaderno.setText("Registrar");
+        btnRegistrarCuaderno.setContentAreaFilled(false);
+        btnRegistrarCuaderno.setOpaque(true);
+        btnRegistrarCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarCuadernoActionPerformed(evt);
+            }
+        });
+
+        txtDescripcionCuaderno.setColumns(20);
+        txtDescripcionCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtDescripcionCuaderno.setForeground(new java.awt.Color(112, 112, 112));
+        txtDescripcionCuaderno.setRows(5);
+        txtDescripcionCuaderno.setText("  Introduce aquí una breve descripción del cuaderno *\n");
+        jScrollPane2.setViewportView(txtDescripcionCuaderno);
+
+        comboNaveCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        comboNaveCuaderno.setForeground(new java.awt.Color(112, 112, 112));
+        comboNaveCuaderno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona el ID de una nave *" }));
+        comboNaveCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboNaveCuadernoActionPerformed(evt);
+            }
+        });
+
+        txtFechaCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtFechaCuaderno.setForeground(new java.awt.Color(102, 102, 102));
+        txtFechaCuaderno.setText("  Fecha de la misión *");
+
+        txtAudioCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtAudioCuaderno.setForeground(new java.awt.Color(102, 102, 102));
+        txtAudioCuaderno.setText("  Audio del cuaderno *");
+
+        javax.swing.GroupLayout panelRegistrarCuadernoLayout = new javax.swing.GroupLayout(panelRegistrarCuaderno);
+        panelRegistrarCuaderno.setLayout(panelRegistrarCuadernoLayout);
+        panelRegistrarCuadernoLayout.setHorizontalGroup(
+            panelRegistrarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarCuadernoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(panelRegistrarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRegistrarCuadernoLayout.createSequentialGroup()
+                        .addComponent(btnRegistrarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarCuadernoLayout.createSequentialGroup()
+                        .addGroup(panelRegistrarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(comboNaveCuaderno, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRegistrarCuadernoLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                                .addComponent(btnSalirRegistroCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFechaCuaderno, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAudioCuaderno))
+                        .addGap(40, 40, 40))))
+        );
+        panelRegistrarCuadernoLayout.setVerticalGroup(
+            panelRegistrarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRegistrarCuadernoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelRegistrarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addComponent(btnSalirRegistroCuaderno))
+                .addGap(18, 18, 18)
+                .addComponent(txtFechaCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtAudioCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(comboNaveCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelRegistrarCuaderno);
+        panelRegistrarCuaderno.setBounds(350, 50, 600, 470);
+
+        panelNave.setBackground(new java.awt.Color(250, 250, 250));
+        panelNave.setMaximumSize(new java.awt.Dimension(230, 160));
+        panelNave.setMinimumSize(new java.awt.Dimension(230, 160));
+
+        btnEliminarNave.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminarNave.setForeground(new java.awt.Color(102, 102, 102));
+        btnEliminarNave.setText("Eliminar una nave");
+        btnEliminarNave.setContentAreaFilled(false);
+        btnEliminarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminarNave.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnEliminarNave.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnEliminarNave.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnEliminarNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarNaveActionPerformed(evt);
+            }
+        });
+
+        btnAñadirNave.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnAñadirNave.setForeground(new java.awt.Color(102, 102, 102));
+        btnAñadirNave.setText("Añandir una nueva nave");
+        btnAñadirNave.setContentAreaFilled(false);
+        btnAñadirNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAñadirNave.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnAñadirNave.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnAñadirNave.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnAñadirNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirNaveActionPerformed(evt);
+            }
+        });
+
+        btnVerNave.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnVerNave.setForeground(new java.awt.Color(102, 102, 102));
+        btnVerNave.setText("Ver naves");
+        btnVerNave.setContentAreaFilled(false);
+        btnVerNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVerNave.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnVerNave.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnVerNave.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnVerNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerNaveActionPerformed(evt);
+            }
+        });
+
+        btnActualizarNave.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarNave.setForeground(new java.awt.Color(102, 102, 102));
+        btnActualizarNave.setText("Actualizar una nave");
+        btnActualizarNave.setContentAreaFilled(false);
+        btnActualizarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnActualizarNave.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnActualizarNave.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnActualizarNave.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnActualizarNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarNaveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelNaveLayout = new javax.swing.GroupLayout(panelNave);
+        panelNave.setLayout(panelNaveLayout);
+        panelNaveLayout.setHorizontalGroup(
+            panelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAñadirNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnVerNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnActualizarNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnEliminarNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelNaveLayout.setVerticalGroup(
+            panelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNaveLayout.createSequentialGroup()
+                .addComponent(btnAñadirNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnVerNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnActualizarNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnEliminarNave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelCentro.add(panelNave);
+        panelNave.setBounds(450, 0, 230, 160);
+
+        panelTripulante.setBackground(new java.awt.Color(250, 250, 250));
+        panelTripulante.setMaximumSize(new java.awt.Dimension(230, 160));
+
+        btnEliminarTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminarTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        btnEliminarTripulante.setText("Eliminar un tripulante");
+        btnEliminarTripulante.setContentAreaFilled(false);
+        btnEliminarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminarTripulante.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnEliminarTripulante.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnEliminarTripulante.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnEliminarTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarTripulanteActionPerformed(evt);
+            }
+        });
+
+        btnAñadirTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnAñadirTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        btnAñadirTripulante.setText("Añadir un nuevo tripulante");
+        btnAñadirTripulante.setContentAreaFilled(false);
+        btnAñadirTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAñadirTripulante.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnAñadirTripulante.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnAñadirTripulante.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnAñadirTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirTripulanteActionPerformed(evt);
+            }
+        });
+
+        btnVerTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnVerTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        btnVerTripulante.setText("Ver tripulantes");
+        btnVerTripulante.setContentAreaFilled(false);
+        btnVerTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVerTripulante.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnVerTripulante.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnVerTripulante.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnVerTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTripulanteActionPerformed(evt);
+            }
+        });
+
+        btnActualizarTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarTripulante.setForeground(new java.awt.Color(102, 102, 102));
+        btnActualizarTripulante.setText("Actualizar un tripulante");
+        btnActualizarTripulante.setContentAreaFilled(false);
+        btnActualizarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnActualizarTripulante.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnActualizarTripulante.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnActualizarTripulante.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnActualizarTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarTripulanteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelTripulanteLayout = new javax.swing.GroupLayout(panelTripulante);
+        panelTripulante.setLayout(panelTripulanteLayout);
+        panelTripulanteLayout.setHorizontalGroup(
+            panelTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAñadirTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnVerTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnActualizarTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnEliminarTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelTripulanteLayout.setVerticalGroup(
+            panelTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTripulanteLayout.createSequentialGroup()
+                .addComponent(btnAñadirTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnVerTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnActualizarTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnEliminarTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelCentro.add(panelTripulante);
+        panelTripulante.setBounds(525, 0, 230, 160);
+
+        panelMision.setBackground(new java.awt.Color(250, 250, 250));
+        panelMision.setMaximumSize(new java.awt.Dimension(230, 160));
+
+        btnEliminarMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminarMision.setForeground(new java.awt.Color(102, 102, 102));
+        btnEliminarMision.setText("Eliminar una misión");
+        btnEliminarMision.setContentAreaFilled(false);
+        btnEliminarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminarMision.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnEliminarMision.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnEliminarMision.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnEliminarMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarMisionActionPerformed(evt);
+            }
+        });
+
+        btnAñadirMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnAñadirMision.setForeground(new java.awt.Color(102, 102, 102));
+        btnAñadirMision.setText("Añandir una nueva misión");
+        btnAñadirMision.setContentAreaFilled(false);
+        btnAñadirMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAñadirMision.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnAñadirMision.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnAñadirMision.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnAñadirMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirMisionActionPerformed(evt);
+            }
+        });
+
+        btnVerMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnVerMision.setForeground(new java.awt.Color(102, 102, 102));
+        btnVerMision.setText("Ver misiones");
+        btnVerMision.setContentAreaFilled(false);
+        btnVerMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVerMision.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnVerMision.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnVerMision.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnVerMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerMisionActionPerformed(evt);
+            }
+        });
+
+        btnActualizarMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarMision.setForeground(new java.awt.Color(102, 102, 102));
+        btnActualizarMision.setText("Actualizar una misión");
+        btnActualizarMision.setContentAreaFilled(false);
+        btnActualizarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnActualizarMision.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnActualizarMision.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnActualizarMision.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnActualizarMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarMisionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMisionLayout = new javax.swing.GroupLayout(panelMision);
+        panelMision.setLayout(panelMisionLayout);
+        panelMisionLayout.setHorizontalGroup(
+            panelMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAñadirMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnVerMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnActualizarMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnEliminarMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelMisionLayout.setVerticalGroup(
+            panelMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMisionLayout.createSequentialGroup()
+                .addComponent(btnAñadirMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnVerMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnActualizarMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnEliminarMision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelCentro.add(panelMision);
+        panelMision.setBounds(630, 0, 230, 160);
+
+        panelCuaderno.setBackground(new java.awt.Color(250, 250, 250));
+        panelCuaderno.setMaximumSize(new java.awt.Dimension(230, 160));
+
+        btnEliminarCuaderno.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminarCuaderno.setForeground(new java.awt.Color(102, 102, 102));
+        btnEliminarCuaderno.setText("Eliminar un cuaderno");
+        btnEliminarCuaderno.setContentAreaFilled(false);
+        btnEliminarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminarCuaderno.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnEliminarCuaderno.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnEliminarCuaderno.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnEliminarCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCuadernoActionPerformed(evt);
+            }
+        });
+
+        btnAñadirCuaderno.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnAñadirCuaderno.setForeground(new java.awt.Color(102, 102, 102));
+        btnAñadirCuaderno.setText("Añadir un nuevo cuaderno");
+        btnAñadirCuaderno.setContentAreaFilled(false);
+        btnAñadirCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAñadirCuaderno.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnAñadirCuaderno.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnAñadirCuaderno.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnAñadirCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirCuadernoActionPerformed(evt);
+            }
+        });
+
+        btnVerCuaderno.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnVerCuaderno.setForeground(new java.awt.Color(102, 102, 102));
+        btnVerCuaderno.setText("Ver cuadernos");
+        btnVerCuaderno.setContentAreaFilled(false);
+        btnVerCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVerCuaderno.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnVerCuaderno.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnVerCuaderno.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnVerCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerCuadernoActionPerformed(evt);
+            }
+        });
+
+        btnActualizarCuaderno.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarCuaderno.setForeground(new java.awt.Color(102, 102, 102));
+        btnActualizarCuaderno.setText("Actualizar un cuaderno");
+        btnActualizarCuaderno.setContentAreaFilled(false);
+        btnActualizarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnActualizarCuaderno.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnActualizarCuaderno.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnActualizarCuaderno.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnActualizarCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarCuadernoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCuadernoLayout = new javax.swing.GroupLayout(panelCuaderno);
+        panelCuaderno.setLayout(panelCuadernoLayout);
+        panelCuadernoLayout.setHorizontalGroup(
+            panelCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAñadirCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnVerCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnActualizarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnEliminarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelCuadernoLayout.setVerticalGroup(
+            panelCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCuadernoLayout.createSequentialGroup()
+                .addComponent(btnAñadirCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnVerCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnActualizarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnEliminarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelCentro.add(panelCuaderno);
+        panelCuaderno.setBounds(725, 0, 230, 160);
+
+        panelCerrarSesion.setBackground(new java.awt.Color(250, 250, 250));
+
+        jButton1.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(112, 112, 112));
+        jButton1.setText("Cerrar sesión");
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCerrarSesionLayout = new javax.swing.GroupLayout(panelCerrarSesion);
+        panelCerrarSesion.setLayout(panelCerrarSesionLayout);
+        panelCerrarSesionLayout.setHorizontalGroup(
+            panelCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCerrarSesionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelCerrarSesionLayout.setVerticalGroup(
+            panelCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCerrarSesionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1))
+        );
+
+        panelCentro.add(panelCerrarSesion);
+        panelCerrarSesion.setBounds(290, 0, 150, 30);
+
+        panelVerNave.setBackground(new java.awt.Color(250, 250, 250));
+        panelVerNave.setMaximumSize(new java.awt.Dimension(1200, 410));
+        panelVerNave.setMinimumSize(new java.awt.Dimension(1200, 410));
+
+        jLabel9.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel9.setText("Listado de naves");
+
+        benSalirRegistroTripulante1.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirRegistroTripulante1.setContentAreaFilled(false);
+        benSalirRegistroTripulante1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                benSalirRegistroTripulante1ActionPerformed(evt);
+            }
+        });
+
+        tableListaNaves.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableListaNaves.setForeground(new java.awt.Color(112, 112, 112));
+        tableListaNaves.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Capitán", "Nombre", "Matrícula", "Tipo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableListaNaves.setRowHeight(40);
+        jScrollPane3.setViewportView(tableListaNaves);
+
+        javax.swing.GroupLayout panelVerNaveLayout = new javax.swing.GroupLayout(panelVerNave);
+        panelVerNave.setLayout(panelVerNaveLayout);
+        panelVerNaveLayout.setHorizontalGroup(
+            panelVerNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerNaveLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(benSalirRegistroTripulante1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+        );
+        panelVerNaveLayout.setVerticalGroup(
+            panelVerNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerNaveLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelVerNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(benSalirRegistroTripulante1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelVerNave);
+        panelVerNave.setBounds(25, 80, 1200, 410);
+
+        panelVerTripulante.setBackground(new java.awt.Color(250, 250, 250));
+        panelVerTripulante.setMaximumSize(new java.awt.Dimension(1200, 410));
+        panelVerTripulante.setMinimumSize(new java.awt.Dimension(1200, 410));
+
+        jLabel10.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel10.setText("Listado de tripulantes");
+
+        btnSalirListadoTripulante.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirListadoTripulante.setContentAreaFilled(false);
+        btnSalirListadoTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirListadoTripulanteActionPerformed(evt);
+            }
+        });
+
+        tableListaTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableListaTripulante.setForeground(new java.awt.Color(112, 112, 112));
+        tableListaTripulante.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Cargo", "Género", "Experiencia", "Origen", "Raza", "Edad", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableListaTripulante.setRowHeight(40);
+        jScrollPane4.setViewportView(tableListaTripulante);
+
+        javax.swing.GroupLayout panelVerTripulanteLayout = new javax.swing.GroupLayout(panelVerTripulante);
+        panelVerTripulante.setLayout(panelVerTripulanteLayout);
+        panelVerTripulanteLayout.setHorizontalGroup(
+            panelVerTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerTripulanteLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalirListadoTripulante, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+        );
+        panelVerTripulanteLayout.setVerticalGroup(
+            panelVerTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerTripulanteLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelVerTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(btnSalirListadoTripulante))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelVerTripulante);
+        panelVerTripulante.setBounds(25, 80, 1200, 410);
+
+        panelVerMision.setBackground(new java.awt.Color(250, 250, 250));
+        panelVerMision.setMaximumSize(new java.awt.Dimension(1200, 410));
+        panelVerMision.setMinimumSize(new java.awt.Dimension(1200, 410));
+
+        jLabel11.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel11.setText("Listado de misiones");
+
+        benSalirRegistroTripulante3.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirRegistroTripulante3.setContentAreaFilled(false);
+        benSalirRegistroTripulante3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                benSalirRegistroTripulante3ActionPerformed(evt);
+            }
+        });
+
+        tableListaMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableListaMision.setForeground(new java.awt.Color(112, 112, 112));
+        tableListaMision.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Descripción", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableListaMision.setRowHeight(40);
+        jScrollPane5.setViewportView(tableListaMision);
+
+        javax.swing.GroupLayout panelVerMisionLayout = new javax.swing.GroupLayout(panelVerMision);
+        panelVerMision.setLayout(panelVerMisionLayout);
+        panelVerMisionLayout.setHorizontalGroup(
+            panelVerMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerMisionLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(benSalirRegistroTripulante3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+        );
+        panelVerMisionLayout.setVerticalGroup(
+            panelVerMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerMisionLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelVerMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addComponent(benSalirRegistroTripulante3))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelVerMision);
+        panelVerMision.setBounds(25, 80, 1200, 410);
+
+        panelVerCuaderno.setBackground(new java.awt.Color(250, 250, 250));
+        panelVerCuaderno.setMaximumSize(new java.awt.Dimension(1200, 410));
+        panelVerCuaderno.setMinimumSize(new java.awt.Dimension(1200, 410));
+
+        jLabel12.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel12.setText("Listado de cuadernos");
+
+        benSalirRegistroTripulante4.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirRegistroTripulante4.setContentAreaFilled(false);
+        benSalirRegistroTripulante4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                benSalirRegistroTripulante4ActionPerformed(evt);
+            }
+        });
+
+        tableListaCuaderno.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableListaCuaderno.setForeground(new java.awt.Color(112, 112, 112));
+        tableListaCuaderno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Fecha", "Descripción", "Audio", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableListaCuaderno.setRowHeight(40);
+        jScrollPane6.setViewportView(tableListaCuaderno);
+
+        javax.swing.GroupLayout panelVerCuadernoLayout = new javax.swing.GroupLayout(panelVerCuaderno);
+        panelVerCuaderno.setLayout(panelVerCuadernoLayout);
+        panelVerCuadernoLayout.setHorizontalGroup(
+            panelVerCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerCuadernoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(benSalirRegistroTripulante4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+        );
+        panelVerCuadernoLayout.setVerticalGroup(
+            panelVerCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerCuadernoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelVerCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12)
+                    .addComponent(benSalirRegistroTripulante4))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelVerCuaderno);
+        panelVerCuaderno.setBounds(25, 80, 1200, 410);
+
+        panelEliminarNave.setBackground(new java.awt.Color(250, 250, 250));
+        panelEliminarNave.setMaximumSize(new java.awt.Dimension(1200, 497));
+        panelEliminarNave.setMinimumSize(new java.awt.Dimension(1200, 497));
+
+        jLabel13.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel13.setText("Selecciona una nave para eliminarla");
+
+        benSalirEliminarNaveRegistrada.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirEliminarNaveRegistrada.setContentAreaFilled(false);
+        benSalirEliminarNaveRegistrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                benSalirEliminarNaveRegistradaActionPerformed(evt);
+            }
+        });
+
+        tableEliminarNaveRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableEliminarNaveRegistrada.setForeground(new java.awt.Color(112, 112, 112));
+        tableEliminarNaveRegistrada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Capitán", "Nombre  ", "Matrícula", "Experiencia"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableEliminarNaveRegistrada.setRowHeight(40);
+        jScrollPane7.setViewportView(tableEliminarNaveRegistrada);
+
+        btnEliminarNaveRegistrada.setBackground(new java.awt.Color(113, 113, 113));
+        btnEliminarNaveRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminarNaveRegistrada.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarNaveRegistrada.setText("Eliminar");
+        btnEliminarNaveRegistrada.setContentAreaFilled(false);
+        btnEliminarNaveRegistrada.setOpaque(true);
+        btnEliminarNaveRegistrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarNaveRegistradaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEliminarNaveLayout = new javax.swing.GroupLayout(panelEliminarNave);
+        panelEliminarNave.setLayout(panelEliminarNaveLayout);
+        panelEliminarNaveLayout.setHorizontalGroup(
+            panelEliminarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarNaveLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 659, Short.MAX_VALUE)
+                .addComponent(benSalirEliminarNaveRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane7)
+            .addGroup(panelEliminarNaveLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(51, 51, 51))
+                .addComponent(btnEliminarNaveRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        subPanelUsuarioLayout.setVerticalGroup(
-            subPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        panelCentro.add(subPanelUsuario);
-        subPanelUsuario.setBounds(300, 0, 127, 23);
-
-        btnSubAnadirNave.setText("Registrar una nave");
-        btnSubAnadirNave.setContentAreaFilled(false);
-        btnSubAnadirNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubListarNave.setText("Listar todas las naves");
-        btnSubListarNave.setContentAreaFilled(false);
-        btnSubListarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubActualizarNave.setText("Actualizar una nave");
-        btnSubActualizarNave.setContentAreaFilled(false);
-        btnSubActualizarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubEliminarNave.setText("Eliminar una nave");
-        btnSubEliminarNave.setContentAreaFilled(false);
-        btnSubEliminarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        javax.swing.GroupLayout subPanelNaveLayout = new javax.swing.GroupLayout(subPanelNave);
-        subPanelNave.setLayout(subPanelNaveLayout);
-        subPanelNaveLayout.setHorizontalGroup(
-            subPanelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelNaveLayout.createSequentialGroup()
-                .addGroup(subPanelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSubAnadirNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSubListarNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSubActualizarNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSubEliminarNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(161, 161, 161))
-        );
-        subPanelNaveLayout.setVerticalGroup(
-            subPanelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelNaveLayout.createSequentialGroup()
-                .addComponent(btnSubAnadirNave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubListarNave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubActualizarNave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubEliminarNave))
+        panelEliminarNaveLayout.setVerticalGroup(
+            panelEliminarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarNaveLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelEliminarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13)
+                    .addComponent(benSalirEliminarNaveRegistrada))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminarNaveRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelCentro.add(subPanelNave);
-        subPanelNave.setBounds(490, 0, 130, 110);
+        panelCentro.add(panelEliminarNave);
+        panelEliminarNave.setBounds(25, 40, 1200, 497);
 
-        btnSubAnadirTripulante.setText("Registrar un tripulante");
-        btnSubAnadirTripulante.setContentAreaFilled(false);
-        btnSubAnadirTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        panelEliminarTripulante.setBackground(new java.awt.Color(250, 250, 250));
+        panelEliminarTripulante.setMaximumSize(new java.awt.Dimension(1200, 497));
+        panelEliminarTripulante.setMinimumSize(new java.awt.Dimension(1200, 497));
 
-        btnSubListarTripulante.setText("Listar todos los tripulantes");
-        btnSubListarTripulante.setContentAreaFilled(false);
-        btnSubListarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel14.setText("Selecciona un tripulante para eliminarlo");
 
-        btnSubActualizarTripulante.setText("Actualizar un tripulante");
-        btnSubActualizarTripulante.setContentAreaFilled(false);
-        btnSubActualizarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSalirEliminarTripulanteRegistrado.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirEliminarTripulanteRegistrado.setContentAreaFilled(false);
+        btnSalirEliminarTripulanteRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirEliminarTripulanteRegistradoActionPerformed(evt);
+            }
+        });
 
-        btnSubEliminarTripulante.setText("Eliminar un tripulante");
-        btnSubEliminarTripulante.setContentAreaFilled(false);
-        btnSubEliminarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tableEliminarTripulanteRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableEliminarTripulanteRegistrado.setForeground(new java.awt.Color(112, 112, 112));
+        tableEliminarTripulanteRegistrado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        javax.swing.GroupLayout subPanelTripulanteLayout = new javax.swing.GroupLayout(subPanelTripulante);
-        subPanelTripulante.setLayout(subPanelTripulanteLayout);
-        subPanelTripulanteLayout.setHorizontalGroup(
-            subPanelTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSubAnadirTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubListarTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubActualizarTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubEliminarTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            },
+            new String [] {
+                "ID", "Nombre", "Cargo", "Género", "Experiencia", "Origen", "Raza", "Edad", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableEliminarTripulanteRegistrado.setRowHeight(40);
+        jScrollPane8.setViewportView(tableEliminarTripulanteRegistrado);
+
+        btnEliminarTripulanteRegistrado.setBackground(new java.awt.Color(113, 113, 113));
+        btnEliminarTripulanteRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminarTripulanteRegistrado.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarTripulanteRegistrado.setText("Eliminar");
+        btnEliminarTripulanteRegistrado.setContentAreaFilled(false);
+        btnEliminarTripulanteRegistrado.setOpaque(true);
+        btnEliminarTripulanteRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarTripulanteRegistradoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEliminarTripulanteLayout = new javax.swing.GroupLayout(panelEliminarTripulante);
+        panelEliminarTripulante.setLayout(panelEliminarTripulanteLayout);
+        panelEliminarTripulanteLayout.setHorizontalGroup(
+            panelEliminarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarTripulanteLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 618, Short.MAX_VALUE)
+                .addComponent(btnSalirEliminarTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane8)
+            .addGroup(panelEliminarTripulanteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEliminarTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        subPanelTripulanteLayout.setVerticalGroup(
-            subPanelTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelTripulanteLayout.createSequentialGroup()
-                .addComponent(btnSubAnadirTripulante)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubListarTripulante)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubActualizarTripulante)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubEliminarTripulante))
-        );
-
-        panelCentro.add(subPanelTripulante);
-        subPanelTripulante.setBounds(850, 0, 159, 110);
-
-        btnSubAnadirMision.setText("Registrar una misión");
-        btnSubAnadirMision.setContentAreaFilled(false);
-        btnSubAnadirMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubListarMision.setText("Listar todas las misiones");
-        btnSubListarMision.setContentAreaFilled(false);
-        btnSubListarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubActualizarMision.setText("Actualizar una misión");
-        btnSubActualizarMision.setContentAreaFilled(false);
-        btnSubActualizarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubEliminarMision.setText("Eliminar una misión");
-        btnSubEliminarMision.setContentAreaFilled(false);
-        btnSubEliminarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        javax.swing.GroupLayout subPanelMisionLayout = new javax.swing.GroupLayout(subPanelMision);
-        subPanelMision.setLayout(subPanelMisionLayout);
-        subPanelMisionLayout.setHorizontalGroup(
-            subPanelMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSubAnadirMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubListarMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubActualizarMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubEliminarMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        subPanelMisionLayout.setVerticalGroup(
-            subPanelMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelMisionLayout.createSequentialGroup()
-                .addComponent(btnSubAnadirMision)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubListarMision)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubActualizarMision)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubEliminarMision))
-        );
-
-        panelCentro.add(subPanelMision);
-        subPanelMision.setBounds(1040, 0, 147, 110);
-
-        btnSubAnadirCuaderno.setText("Registrar un cuaderno");
-        btnSubAnadirCuaderno.setContentAreaFilled(false);
-        btnSubAnadirCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubListarCuaderno.setText("Listar todos los cuadernos");
-        btnSubListarCuaderno.setContentAreaFilled(false);
-        btnSubListarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubActualizarCuaderno.setText("Actualizar un cuaderno");
-        btnSubActualizarCuaderno.setContentAreaFilled(false);
-        btnSubActualizarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        btnSubEliminarCuaderno.setText("Eliminar un cuaderno");
-        btnSubEliminarCuaderno.setContentAreaFilled(false);
-        btnSubEliminarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        javax.swing.GroupLayout subPanelCuadernoLayout = new javax.swing.GroupLayout(subPanelCuaderno);
-        subPanelCuaderno.setLayout(subPanelCuadernoLayout);
-        subPanelCuadernoLayout.setHorizontalGroup(
-            subPanelCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSubAnadirCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubListarCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubActualizarCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSubEliminarCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        subPanelCuadernoLayout.setVerticalGroup(
-            subPanelCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelCuadernoLayout.createSequentialGroup()
-                .addComponent(btnSubAnadirCuaderno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubListarCuaderno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubActualizarCuaderno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubEliminarCuaderno))
+        panelEliminarTripulanteLayout.setVerticalGroup(
+            panelEliminarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarTripulanteLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelEliminarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14)
+                    .addComponent(btnSalirEliminarTripulanteRegistrado))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminarTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelCentro.add(subPanelCuaderno);
-        subPanelCuaderno.setBounds(660, 0, 157, 110);
+        panelCentro.add(panelEliminarTripulante);
+        panelEliminarTripulante.setBounds(25, 40, 1200, 497);
+
+        panelEliminarMision.setBackground(new java.awt.Color(250, 250, 250));
+        panelEliminarMision.setMaximumSize(new java.awt.Dimension(1200, 497));
+        panelEliminarMision.setMinimumSize(new java.awt.Dimension(1200, 497));
+
+        jLabel15.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel15.setText("Selecciona una misión para eliminarla");
+
+        btnSalirEliminarMisionRegistrada.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirEliminarMisionRegistrada.setContentAreaFilled(false);
+        btnSalirEliminarMisionRegistrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirEliminarMisionRegistradaActionPerformed(evt);
+            }
+        });
+
+        tableEliminarMisionRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableEliminarMisionRegistrada.setForeground(new java.awt.Color(112, 112, 112));
+        tableEliminarMisionRegistrada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Descripción", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableEliminarMisionRegistrada.setRowHeight(40);
+        jScrollPane9.setViewportView(tableEliminarMisionRegistrada);
+
+        btnEliminaMisionRegistrada.setBackground(new java.awt.Color(113, 113, 113));
+        btnEliminaMisionRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminaMisionRegistrada.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminaMisionRegistrada.setText("Eliminar");
+        btnEliminaMisionRegistrada.setContentAreaFilled(false);
+        btnEliminaMisionRegistrada.setOpaque(true);
+        btnEliminaMisionRegistrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminaMisionRegistradaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEliminarMisionLayout = new javax.swing.GroupLayout(panelEliminarMision);
+        panelEliminarMision.setLayout(panelEliminarMisionLayout);
+        panelEliminarMisionLayout.setHorizontalGroup(
+            panelEliminarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarMisionLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
+                .addComponent(btnSalirEliminarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane9)
+            .addGroup(panelEliminarMisionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEliminaMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelEliminarMisionLayout.setVerticalGroup(
+            panelEliminarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarMisionLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelEliminarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel15)
+                    .addComponent(btnSalirEliminarMisionRegistrada))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminaMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelEliminarMision);
+        panelEliminarMision.setBounds(25, 40, 1200, 497);
+
+        panelEliminarCuaderno.setBackground(new java.awt.Color(250, 250, 250));
+        panelEliminarCuaderno.setMaximumSize(new java.awt.Dimension(1200, 497));
+        panelEliminarCuaderno.setMinimumSize(new java.awt.Dimension(1200, 497));
+
+        jLabel16.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel16.setText("Selecciona un cuaderno de bitácora para eliminarlo");
+
+        btnSalirEliminarCuadernoRegistrado.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirEliminarCuadernoRegistrado.setContentAreaFilled(false);
+        btnSalirEliminarCuadernoRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirEliminarCuadernoRegistradoActionPerformed(evt);
+            }
+        });
+
+        tableEliminarCuadernoRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableEliminarCuadernoRegistrado.setForeground(new java.awt.Color(112, 112, 112));
+        tableEliminarCuadernoRegistrado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Descripción", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableEliminarCuadernoRegistrado.setRowHeight(40);
+        jScrollPane10.setViewportView(tableEliminarCuadernoRegistrado);
+
+        btnEliminaCuadernoRegistrado.setBackground(new java.awt.Color(113, 113, 113));
+        btnEliminaCuadernoRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnEliminaCuadernoRegistrado.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminaCuadernoRegistrado.setText("Eliminar");
+        btnEliminaCuadernoRegistrado.setContentAreaFilled(false);
+        btnEliminaCuadernoRegistrado.setOpaque(true);
+        btnEliminaCuadernoRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminaCuadernoRegistradoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEliminarCuadernoLayout = new javax.swing.GroupLayout(panelEliminarCuaderno);
+        panelEliminarCuaderno.setLayout(panelEliminarCuadernoLayout);
+        panelEliminarCuadernoLayout.setHorizontalGroup(
+            panelEliminarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarCuadernoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
+                .addComponent(btnSalirEliminarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addComponent(jScrollPane10)
+            .addGroup(panelEliminarCuadernoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEliminaCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelEliminarCuadernoLayout.setVerticalGroup(
+            panelEliminarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEliminarCuadernoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelEliminarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16)
+                    .addComponent(btnSalirEliminarCuadernoRegistrado))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminaCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelCentro.add(panelEliminarCuaderno);
+        panelEliminarCuaderno.setBounds(25, 40, 1200, 497);
+
+        panelActualizarNave.setBackground(new java.awt.Color(250, 250, 250));
+        panelActualizarNave.setMaximumSize(new java.awt.Dimension(1350, 650));
+        panelActualizarNave.setMinimumSize(new java.awt.Dimension(1350, 650));
+
+        jLabel17.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel17.setText("Selecciona una nave para actualizarla");
+
+        btnSalirActualizarNave.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarNave.setContentAreaFilled(false);
+        btnSalirActualizarNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActualizarNaveActionPerformed(evt);
+            }
+        });
+
+        tableActualizarNaveRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableActualizarNaveRegistrada.setForeground(new java.awt.Color(112, 112, 112));
+        tableActualizarNaveRegistrada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Capitán", "Nombre", "Matrícula", "Tipo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableActualizarNaveRegistrada.setRowHeight(40);
+        tableActualizarNaveRegistrada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableActualizarNaveRegistradaMouseClicked(evt);
+            }
+        });
+        jScrollPane11.setViewportView(tableActualizarNaveRegistrada);
+
+        btnActualizarNaveRegistrada.setBackground(new java.awt.Color(113, 113, 113));
+        btnActualizarNaveRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarNaveRegistrada.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarNaveRegistrada.setText("Actualizar");
+        btnActualizarNaveRegistrada.setContentAreaFilled(false);
+        btnActualizarNaveRegistrada.setOpaque(true);
+        btnActualizarNaveRegistrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarNaveRegistradaActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel18.setText("Capitán");
+
+        jLabel19.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel19.setText("Nombre");
+
+        jLabel20.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel20.setText("Matrícula");
+
+        jLabel21.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel21.setText("Tipo");
+
+        txtCapitanSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtCapitanSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtNombreSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtNombreSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtMatriculaSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtMatriculaSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtTipoSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtTipoSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel22.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel22.setText("ID");
+
+        txtIdNaveSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtIdNaveSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
+
+        javax.swing.GroupLayout panelActualizarNaveLayout = new javax.swing.GroupLayout(panelActualizarNave);
+        panelActualizarNave.setLayout(panelActualizarNaveLayout);
+        panelActualizarNaveLayout.setHorizontalGroup(
+            panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarNaveLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalirActualizarNave, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(panelActualizarNaveLayout.createSequentialGroup()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarNaveLayout.createSequentialGroup()
+                        .addGroup(panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelActualizarNaveLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnActualizarNaveRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41))
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(txtCapitanSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMatriculaSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTipoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdNaveSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(290, Short.MAX_VALUE))
+                    .addGroup(panelActualizarNaveLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        panelActualizarNaveLayout.setVerticalGroup(
+            panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarNaveLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel17)
+                    .addComponent(btnSalirActualizarNave))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarNaveLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIdNaveSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCapitanSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMatriculaSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTipoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(btnActualizarNaveRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
+        );
+
+        panelCentro.add(panelActualizarNave);
+        panelActualizarNave.setBounds(80, 10, 1060, 550);
+
+        panelActualizarTripulante.setBackground(new java.awt.Color(250, 250, 250));
+        panelActualizarTripulante.setMaximumSize(new java.awt.Dimension(1350, 650));
+        panelActualizarTripulante.setMinimumSize(new java.awt.Dimension(1350, 650));
+
+        jLabel23.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel23.setText("Selecciona una tripulante para actualizarlo");
+
+        btnSalirActualizarNave1.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarNave1.setContentAreaFilled(false);
+        btnSalirActualizarNave1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActualizarNave1ActionPerformed(evt);
+            }
+        });
+
+        tableActualizarTripulanteRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableActualizarTripulanteRegistrado.setForeground(new java.awt.Color(112, 112, 112));
+        tableActualizarTripulanteRegistrado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Cargo", "Género", "Experiencia", "Origen", "Raza", "Edad", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableActualizarTripulanteRegistrado.setRowHeight(40);
+        tableActualizarTripulanteRegistrado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableActualizarTripulanteRegistradoMouseClicked(evt);
+            }
+        });
+        jScrollPane12.setViewportView(tableActualizarTripulanteRegistrado);
+
+        btnActualizaTripulanteRegistrado.setBackground(new java.awt.Color(113, 113, 113));
+        btnActualizaTripulanteRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizaTripulanteRegistrado.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizaTripulanteRegistrado.setText("Actualizar");
+        btnActualizaTripulanteRegistrado.setContentAreaFilled(false);
+        btnActualizaTripulanteRegistrado.setOpaque(true);
+        btnActualizaTripulanteRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizaTripulanteRegistradoActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel24.setText("ID");
+
+        txtIdTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtIdTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel25.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel25.setText("Nombre");
+
+        txtNombreTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtNombreTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel26.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel26.setText("Cargo");
+
+        txtCargoTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtCargoTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel27.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel27.setText("Género");
+
+        txtGeneroTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtGeneroTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtExperienciaTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtExperienciaTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel28.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel28.setText("Experiencia");
+
+        txtOrigenTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtOrigenTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel29.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel29.setText("Origen");
+
+        jLabel30.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel30.setText("Raza");
+
+        txtRazaTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtRazaTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel31.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel31.setText("Edad");
+
+        txtEdadTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtEdadTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel32.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        jLabel32.setText("Nave");
+
+        comboIdNaveTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        comboIdNaveTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboIdNaveTripulanteSeleccionado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32)
+                    .addComponent(txtEdadTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel31)
+                    .addComponent(txtRazaTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel30)
+                    .addComponent(txtOrigenTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel29)
+                    .addComponent(txtExperienciaTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel28)
+                    .addComponent(txtGeneroTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel27)
+                    .addComponent(txtCargoTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel26)
+                    .addComponent(txtNombreTripulanteSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addComponent(txtIdTripulanteSeleccionado)
+                    .addComponent(jLabel24))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel24)
+                .addGap(4, 4, 4)
+                .addComponent(txtIdTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCargoTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtGeneroTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtExperienciaTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtOrigenTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRazaTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEdadTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboIdNaveTripulanteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jScrollPane13.setViewportView(jPanel3);
+
+        javax.swing.GroupLayout panelActualizarTripulanteLayout = new javax.swing.GroupLayout(panelActualizarTripulante);
+        panelActualizarTripulante.setLayout(panelActualizarTripulanteLayout);
+        panelActualizarTripulanteLayout.setHorizontalGroup(
+            panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarTripulanteLayout.createSequentialGroup()
+                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnActualizaTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55))
+                            .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jScrollPane13))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelActualizarTripulanteLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalirActualizarNave1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40))
+        );
+        panelActualizarTripulanteLayout.setVerticalGroup(
+            panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel23)
+                    .addComponent(btnSalirActualizarNave1))
+                .addGap(18, 18, 18)
+                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(btnActualizaTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addComponent(jScrollPane12)))
+        );
+
+        panelCentro.add(panelActualizarTripulante);
+        panelActualizarTripulante.setBounds(150, 130, 1350, 650);
+
+        panelActualizarMision.setBackground(new java.awt.Color(250, 250, 250));
+        panelActualizarMision.setMaximumSize(new java.awt.Dimension(1350, 650));
+        panelActualizarMision.setMinimumSize(new java.awt.Dimension(1350, 650));
+
+        jLabel33.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel33.setText("Selecciona una misión para actualizarla");
+
+        btnSalirActualizarMision.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarMision.setContentAreaFilled(false);
+        btnSalirActualizarMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActualizarMisionActionPerformed(evt);
+            }
+        });
+
+        tableActualizarMisiónRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableActualizarMisiónRegistrada.setForeground(new java.awt.Color(112, 112, 112));
+        tableActualizarMisiónRegistrada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Descripción", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableActualizarMisiónRegistrada.setRowHeight(40);
+        tableActualizarMisiónRegistrada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableActualizarMisiónRegistradaMouseClicked(evt);
+            }
+        });
+        jScrollPane14.setViewportView(tableActualizarMisiónRegistrada);
+
+        btnActualizarMisionRegistrada.setBackground(new java.awt.Color(113, 113, 113));
+        btnActualizarMisionRegistrada.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarMisionRegistrada.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarMisionRegistrada.setText("Actualizar");
+        btnActualizarMisionRegistrada.setContentAreaFilled(false);
+        btnActualizarMisionRegistrada.setOpaque(true);
+        btnActualizarMisionRegistrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarMisionRegistradaActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel34.setText("Nombre");
+
+        jLabel35.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel35.setText("Descripción");
+
+        jLabel36.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel36.setText("Nave");
+
+        txtNombreMisionSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtNombreMisionSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel37.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel37.setText("ID");
+
+        txtIdMisionSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtIdMisionSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtDescripcionMisionSeleccionada.setColumns(20);
+        txtDescripcionMisionSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtDescripcionMisionSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
+        txtDescripcionMisionSeleccionada.setRows(5);
+        jScrollPane15.setViewportView(txtDescripcionMisionSeleccionada);
+
+        comboNaveMisionSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        comboNaveMisionSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
+
+        javax.swing.GroupLayout panelActualizarMisionLayout = new javax.swing.GroupLayout(panelActualizarMision);
+        panelActualizarMision.setLayout(panelActualizarMisionLayout);
+        panelActualizarMisionLayout.setHorizontalGroup(
+            panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalirActualizarMision, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarMisionLayout.createSequentialGroup()
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboNaveMisionSeleccionada, 0, 282, Short.MAX_VALUE)
+                            .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel36)
+                            .addComponent(txtNombreMisionSeleccionado)
+                            .addComponent(jLabel37)
+                            .addComponent(txtIdMisionSeleccionada))
+                        .addContainerGap(54, Short.MAX_VALUE))))
+        );
+        panelActualizarMisionLayout.setVerticalGroup(
+            panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel33)
+                    .addComponent(btnSalirActualizarMision))
+                .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane14))
+                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIdMisionSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreMisionSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboNaveMisionSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addComponent(btnActualizarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
+        );
+
+        panelCentro.add(panelActualizarMision);
+        panelActualizarMision.setBounds(150, 130, 1350, 650);
+
+        panelActualizarCuaderno.setBackground(new java.awt.Color(250, 250, 250));
+        panelActualizarCuaderno.setMaximumSize(new java.awt.Dimension(1350, 650));
+        panelActualizarCuaderno.setMinimumSize(new java.awt.Dimension(1350, 650));
+
+        jLabel38.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
+        jLabel38.setText("Selecciona un cuaderno para actualizarlo");
+
+        btnSalirActualizarCuaderno.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarCuaderno.setContentAreaFilled(false);
+        btnSalirActualizarCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActualizarCuadernoActionPerformed(evt);
+            }
+        });
+
+        tableActualizarCuadernoRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        tableActualizarCuadernoRegistrado.setForeground(new java.awt.Color(112, 112, 112));
+        tableActualizarCuadernoRegistrado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Fecha", "Descripción", "Audio", "Nave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableActualizarCuadernoRegistrado.setRowHeight(40);
+        tableActualizarCuadernoRegistrado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableActualizarCuadernoRegistradoMouseClicked(evt);
+            }
+        });
+        jScrollPane16.setViewportView(tableActualizarCuadernoRegistrado);
+
+        btnActualizarCuadernoRegistrado.setBackground(new java.awt.Color(113, 113, 113));
+        btnActualizarCuadernoRegistrado.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        btnActualizarCuadernoRegistrado.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarCuadernoRegistrado.setText("Actualizar");
+        btnActualizarCuadernoRegistrado.setContentAreaFilled(false);
+        btnActualizarCuadernoRegistrado.setOpaque(true);
+        btnActualizarCuadernoRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarCuadernoRegistradoActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel39.setText("Fecha");
+
+        jLabel40.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel40.setText("Descripción");
+
+        jLabel41.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel41.setText("Nave");
+
+        txtFechaCuadernoSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtFechaCuadernoSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel42.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel42.setText("ID");
+
+        txtIdCuadernoRegistrado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtIdCuadernoRegistrado.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtDescripcionCuadernoSeleccionado.setColumns(20);
+        txtDescripcionCuadernoSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtDescripcionCuadernoSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+        txtDescripcionCuadernoSeleccionado.setRows(5);
+        jScrollPane17.setViewportView(txtDescripcionCuadernoSeleccionado);
+
+        comboNaveCuadernoSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        comboNaveCuadernoSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        txtAudioCuadernoSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
+        txtAudioCuadernoSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
+
+        jLabel43.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
+        jLabel43.setText("Audio");
+
+        javax.swing.GroupLayout panelActualizarCuadernoLayout = new javax.swing.GroupLayout(panelActualizarCuaderno);
+        panelActualizarCuaderno.setLayout(panelActualizarCuadernoLayout);
+        panelActualizarCuadernoLayout.setHorizontalGroup(
+            panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalirActualizarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarCuadernoLayout.createSequentialGroup()
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel43)
+                            .addComponent(comboNaveCuadernoSeleccionado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel41)
+                            .addComponent(txtFechaCuadernoSeleccionada)
+                            .addComponent(jLabel42)
+                            .addComponent(txtIdCuadernoRegistrado)
+                            .addComponent(txtAudioCuadernoSeleccionado))
+                        .addContainerGap(54, Short.MAX_VALUE))))
+        );
+        panelActualizarCuadernoLayout.setVerticalGroup(
+            panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel38)
+                    .addComponent(btnSalirActualizarCuaderno))
+                .addGap(18, 18, 18)
+                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
+                        .addComponent(jLabel42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIdCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFechaCuadernoSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAudioCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboNaveCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(btnActualizarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addComponent(jScrollPane16)))
+        );
+
+        panelCentro.add(panelActualizarCuaderno);
+        panelActualizarCuaderno.setBounds(150, 130, 1350, 650);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,24 +2580,585 @@ public class Index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTripulanteActionPerformed
-        // TODO add your handling code here:
+        if (panelTripulante.isVisible()) {
+            panelTripulante.setVisible(false);
+        } else {
+            panelTripulante.setVisible(true);
+            panelUsuarios.setVisible(false);
+            panelNave.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+        }
     }//GEN-LAST:event_btnTripulanteActionPerformed
 
     private void btnNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaveActionPerformed
-        // TODO add your handling code here:
+        if (panelNave.isVisible()) {
+            panelNave.setVisible(false);
+        } else {
+            panelNave.setVisible(true);
+            panelUsuarios.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+        }
     }//GEN-LAST:event_btnNaveActionPerformed
 
     private void btnAreaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaUsuariosActionPerformed
-        // TODO add your handling code here:
+        if (panelUsuarios.isVisible()) {
+            panelUsuarios.setVisible(false);
+        } else {
+            panelUsuarios.setVisible(true);
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+        }
     }//GEN-LAST:event_btnAreaUsuariosActionPerformed
 
     private void btnMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMisionActionPerformed
-        // TODO add your handling code here:
+        if (panelMision.isVisible()) {
+            panelMision.setVisible(false);
+        } else {
+            panelMision.setVisible(true);
+            panelUsuarios.setVisible(false);
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelCuaderno.setVisible(false);
+        }
     }//GEN-LAST:event_btnMisionActionPerformed
 
     private void btnCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuadernoActionPerformed
-        // TODO add your handling code here:
+        if (panelCuaderno.isVisible()) {
+            panelCuaderno.setVisible(false);
+        } else {
+            panelCuaderno.setVisible(true);
+            panelUsuarios.setVisible(false);
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+        }
     }//GEN-LAST:event_btnCuadernoActionPerformed
+
+    private void txtUsuarioNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioNuevoActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        try {
+            Usuario usuario = new Usuario();
+            if (usuario.comprobarLogin(this, txtUser, txtPass) == true) {
+                activarBotones();
+                panelUsuarios.setVisible(false);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
+        try {
+            usuario.registrarUsuario(this, txtNombreNuevo, txtUsuarioNuevo, txtPassNuevo);
+            System.out.println("Se ha registrado");
+        } catch (Exception ex) {
+            System.out.println("No se ha podido registrar: " + ex);
+        }
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
+
+    private void btnSalirRegistroNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirRegistroNaveActionPerformed
+        panelRegistrarNave.setVisible(false);
+    }//GEN-LAST:event_btnSalirRegistroNaveActionPerformed
+
+    private void btnRegistrarNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarNaveActionPerformed
+        Nave nave = new Nave();
+        nave.registrarNave(panelRegistrarNave, txtCapitanNave, txtNombreNave, txtMatriculaNave, txtTipoNave);
+    }//GEN-LAST:event_btnRegistrarNaveActionPerformed
+
+    private void btnSalirRegistroTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirRegistroTripulanteActionPerformed
+        panelRegistrarTripulante.setVisible(false);
+    }//GEN-LAST:event_btnSalirRegistroTripulanteActionPerformed
+
+    private void btnRegistrarTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarTripulanteActionPerformed
+        Tripulante tripulante = new Tripulante();
+        tripulante.registrarTripulante(this, txtNombreTripulante, txtCargoTripulante, txtGeneroTripulante, txtExperienciaTripulante, txtOrigenTripulante, txtRazaTripulante, txtTipoTripulante, comboNaveTripulante);
+    }//GEN-LAST:event_btnRegistrarTripulanteActionPerformed
+
+    private void comboNaveTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNaveTripulanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboNaveTripulanteActionPerformed
+
+    private void btnSalirRegistroMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirRegistroMisionActionPerformed
+        panelRegistrarMision.setVisible(false);
+    }//GEN-LAST:event_btnSalirRegistroMisionActionPerformed
+
+    private void btnRegistrarMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMisionActionPerformed
+        Mision mision = new Mision();
+        mision.registrarMision(this, txtNombreMision, txtDescripcionMision, comboNaveMision);
+    }//GEN-LAST:event_btnRegistrarMisionActionPerformed
+
+    private void comboNaveMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNaveMisionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboNaveMisionActionPerformed
+
+    private void btnSalirRegistroCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirRegistroCuadernoActionPerformed
+        panelRegistrarCuaderno.setVisible(false);
+    }//GEN-LAST:event_btnSalirRegistroCuadernoActionPerformed
+
+    private void btnRegistrarCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCuadernoActionPerformed
+        Cuaderno cuaderno = new Cuaderno();
+        cuaderno.registrarCuaderno(this, txtFechaCuaderno, txtDescripcionCuaderno, txtAudioCuaderno, comboNaveCuaderno);
+    }//GEN-LAST:event_btnRegistrarCuadernoActionPerformed
+
+    private void comboNaveCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNaveCuadernoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboNaveCuadernoActionPerformed
+
+    private void btnEliminarNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarNaveActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableEliminarNaveRegistrada.getModel();
+            NaveDAO.getInstance().listar(modelo);
+            panelEliminarNave.setVisible(true);
+            panelNave.setVisible(false);
+        } catch (Exception ex) {
+            System.out.println("Se ha producido un error al intentar abrir eliminar nave. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelEliminarNave.setVisible(false);
+        }
+    }//GEN-LAST:event_btnEliminarNaveActionPerformed
+
+    private void btnAñadirNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirNaveActionPerformed
+        panelRegistrarNave.setVisible(true);
+        panelNave.setVisible(false);
+        Nave nave = new Nave();
+        nave.rellenarCombo(comboNaveMision);
+    }//GEN-LAST:event_btnAñadirNaveActionPerformed
+
+    private void btnVerNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerNaveActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableListaNaves.getModel();
+            NaveDAO.getInstance().listar(modelo);
+            panelVerNave.setVisible(true);
+            panelNave.setVisible(false);
+        } catch (SQLException ex) {
+            System.out.println("Se ha producido un error al intentar abrir listar naves. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido.");
+        }
+    }//GEN-LAST:event_btnVerNaveActionPerformed
+
+    private void btnActualizarNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarNaveActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarNaveRegistrada.getModel();
+            NaveDAO.getInstance().listar(modelo);
+            panelActualizarNave.setVisible(true);
+            panelNave.setVisible(false);
+        } catch (Exception ex) {
+            System.out.println("Se ha producido un error al intentar abrir actualizar nave. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelActualizarNave.setVisible(false);
+        }
+    }//GEN-LAST:event_btnActualizarNaveActionPerformed
+
+    private void btnEliminarTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTripulanteActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableEliminarTripulanteRegistrado.getModel();
+            TripulanteDAO.getInstance().listar(modelo);
+            panelEliminarTripulante.setVisible(true);
+            panelTripulante.setVisible(false);
+        } catch (Exception ex) {
+            System.out.println("Se ha producido un error al intentar abrir eliminar nave. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelEliminarNave.setVisible(false);
+        }
+    }//GEN-LAST:event_btnEliminarTripulanteActionPerformed
+
+    private void btnAñadirTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirTripulanteActionPerformed
+        panelRegistrarTripulante.setVisible(true);
+        panelTripulante.setVisible(false);
+        Nave nave = new Nave();
+        nave.rellenarCombo(comboNaveTripulante);
+    }//GEN-LAST:event_btnAñadirTripulanteActionPerformed
+
+    private void btnVerTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTripulanteActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableListaTripulante.getModel();
+            TripulanteDAO.getInstance().listar(modelo);
+            panelVerTripulante.setVisible(true);
+            panelTripulante.setVisible(false);
+        } catch (SQLException ex) {
+            System.out.println("Se ha producido un error al intentar abrir listar tripulante. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido.");
+        }
+    }//GEN-LAST:event_btnVerTripulanteActionPerformed
+
+    private void btnActualizarTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTripulanteActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarTripulanteRegistrado.getModel();
+            TripulanteDAO.getInstance().listar(modelo);
+            panelActualizarTripulante.setVisible(true);
+            panelTripulante.setVisible(false);
+        } catch (SQLException ex) {
+            System.out.println("Se ha producido un error al intentar abrir actualizar tripulante. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelActualizarTripulante.setVisible(false);
+        }
+    }//GEN-LAST:event_btnActualizarTripulanteActionPerformed
+
+    private void btnEliminarMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMisionActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableEliminarMisionRegistrada.getModel();
+            MisionDAO.getInstance().listar(modelo);
+            panelEliminarMision.setVisible(true);
+            panelMision.setVisible(false);
+        } catch (Exception ex) {
+            System.out.println("Se ha producido un error al intentar abrir eliminar misión. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelEliminarMision.setVisible(false);
+        }
+    }//GEN-LAST:event_btnEliminarMisionActionPerformed
+
+    private void btnAñadirMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirMisionActionPerformed
+        panelRegistrarMision.setVisible(true);
+        panelMision.setVisible(false);
+        Nave nave = new Nave();
+        nave.rellenarCombo(comboNaveMision);
+    }//GEN-LAST:event_btnAñadirMisionActionPerformed
+
+    private void btnVerMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMisionActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableListaMision.getModel();
+            MisionDAO.getInstance().listar(modelo);
+            panelVerMision.setVisible(true);
+            panelMision.setVisible(false);
+        } catch (SQLException ex) {
+            System.out.println("Se ha producido un error al intentar abrir listar mision. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido.");
+        }
+    }//GEN-LAST:event_btnVerMisionActionPerformed
+
+    private void btnActualizarMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarMisionActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarMisiónRegistrada.getModel();
+            MisionDAO.getInstance().listar(modelo);
+            panelActualizarMision.setVisible(true);
+            panelMision.setVisible(false);
+        } catch (SQLException ex) {
+            System.out.println("Se ha producido un error al intentar abrir actualizar misión. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelActualizarMision.setVisible(false);
+        }
+    }//GEN-LAST:event_btnActualizarMisionActionPerformed
+
+    private void btnEliminarCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCuadernoActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableEliminarCuadernoRegistrado.getModel();
+            CuadernoDAO.getInstance().listar(modelo);
+            panelEliminarCuaderno.setVisible(true);
+            panelCuaderno.setVisible(false);
+        } catch (Exception ex) {
+            System.out.println("Se ha producido un error al intentar abrir eliminar cuaderno. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelEliminarCuaderno.setVisible(false);
+        }
+    }//GEN-LAST:event_btnEliminarCuadernoActionPerformed
+
+    private void btnAñadirCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirCuadernoActionPerformed
+        panelRegistrarCuaderno.setVisible(true);
+        panelCuaderno.setVisible(false);
+        Nave nave = new Nave();
+        nave.rellenarCombo(comboNaveCuaderno);
+    }//GEN-LAST:event_btnAñadirCuadernoActionPerformed
+
+    private void btnVerCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCuadernoActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableListaCuaderno.getModel();
+            CuadernoDAO.getInstance().listar(modelo);
+            panelVerCuaderno.setVisible(true);
+            panelCuaderno.setVisible(false);
+        } catch (Exception ex) {
+            System.out.println("Se ha producido un error al intentar abrir listar cuaderno. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+        }
+    }//GEN-LAST:event_btnVerCuadernoActionPerformed
+
+    private void btnActualizarCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCuadernoActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarCuadernoRegistrado.getModel();
+            CuadernoDAO.getInstance().listar(modelo);
+            panelActualizarCuaderno.setVisible(true);
+            panelCuaderno.setVisible(false);
+        } catch (SQLException ex) {
+            System.out.println("Se ha producido un error al intentar abrir actualizar tripulante. \t Error: " + ex);
+            JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
+            panelActualizarTripulante.setVisible(false);
+        }
+    }//GEN-LAST:event_btnActualizarCuadernoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void benSalirRegistroTripulante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_benSalirRegistroTripulante1ActionPerformed
+        panelVerNave.setVisible(false);
+    }//GEN-LAST:event_benSalirRegistroTripulante1ActionPerformed
+
+    private void btnSalirListadoTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirListadoTripulanteActionPerformed
+        panelVerTripulante.setVisible(false);
+    }//GEN-LAST:event_btnSalirListadoTripulanteActionPerformed
+
+    private void benSalirRegistroTripulante3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_benSalirRegistroTripulante3ActionPerformed
+        panelVerMision.setVisible(false);
+    }//GEN-LAST:event_benSalirRegistroTripulante3ActionPerformed
+
+    private void benSalirRegistroTripulante4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_benSalirRegistroTripulante4ActionPerformed
+        panelVerCuaderno.setVisible(false);
+    }//GEN-LAST:event_benSalirRegistroTripulante4ActionPerformed
+
+    private void benSalirEliminarNaveRegistradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_benSalirEliminarNaveRegistradaActionPerformed
+        panelEliminarNave.setVisible(false);
+    }//GEN-LAST:event_benSalirEliminarNaveRegistradaActionPerformed
+
+    private void btnEliminarNaveRegistradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarNaveRegistradaActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tableEliminarNaveRegistrada.getModel();
+
+        int seleccionada = tableEliminarNaveRegistrada.getSelectedRow() + 1;
+        System.out.println("Fila seleccionada: " + (seleccionada));
+
+        int id = ((int) tableEliminarNaveRegistrada.getValueAt(tableEliminarNaveRegistrada.getSelectedRow(), 0));
+        System.out.println("ID: " + id);
+
+        try {
+            int dialogButton = JOptionPane.YES_OPTION;
+            JOptionPane.showConfirmDialog(this, "¿Seguro que quieres eliminar esta nave?", "WARNING", dialogButton);
+            try {
+                if (dialogButton == JOptionPane.YES_OPTION) {
+                    Nave nave = new Nave();
+                    nave.eliminarNave(id);
+                    modelo.removeRow(seleccionada - 1);
+                    JOptionPane.showMessageDialog(this, "La nave con id:" + id + " se ha eliminado con éxito");
+                    System.out.println("Se ha eliminado");
+
+                } else {
+                    System.out.println("Has decidido no eliminarlo");
+                }
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex);
+            }
+        } catch (Exception ex) {
+            System.out.println("No se ha podido eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarNaveRegistradaActionPerformed
+
+    private void btnSalirEliminarTripulanteRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEliminarTripulanteRegistradoActionPerformed
+        panelEliminarTripulante.setVisible(false);
+    }//GEN-LAST:event_btnSalirEliminarTripulanteRegistradoActionPerformed
+
+    private void btnEliminarTripulanteRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTripulanteRegistradoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tableEliminarTripulanteRegistrado.getModel();
+        int seleccionada = tableEliminarTripulanteRegistrado.getSelectedRow() + 1;
+        System.out.println("Fila seleccionada: " + (seleccionada));
+
+        int id = ((int) tableEliminarTripulanteRegistrado.getValueAt(tableEliminarTripulanteRegistrado.getSelectedRow(), 0));
+        System.out.println("ID: " + id);
+
+        try {
+            int dialogButton = JOptionPane.YES_OPTION;
+            JOptionPane.showConfirmDialog(this, "¿Seguro que quieres eliminar este tripulante?", "WARNING", dialogButton);
+
+            if (dialogButton == JOptionPane.YES_OPTION) {
+                Nave nave = new Nave();
+                Tripulante tripulante = new Tripulante();
+                tripulante.eliminarTripulante(id);
+                modelo.removeRow(seleccionada - 1);
+                JOptionPane.showMessageDialog(this, "El tripulante con id:" + id + " se ha eliminado con éxito");
+                System.out.println("Se ha eliminado");
+
+            } else {
+                System.out.println("Has decidido no eliminarlo");
+            }
+
+        } catch (Exception ex) {
+            System.out.println("No se ha podido eliminar");
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnEliminarTripulanteRegistradoActionPerformed
+
+    private void btnSalirEliminarMisionRegistradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEliminarMisionRegistradaActionPerformed
+        panelEliminarMision.setVisible(false);
+    }//GEN-LAST:event_btnSalirEliminarMisionRegistradaActionPerformed
+
+    private void btnEliminaMisionRegistradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminaMisionRegistradaActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tableEliminarMisionRegistrada.getModel();
+        int seleccionada = tableEliminarMisionRegistrada.getSelectedRow() + 1;
+        System.out.println("Fila seleccionada: " + seleccionada);
+        int id = ((int) tableEliminarMisionRegistrada.getValueAt(tableEliminarMisionRegistrada.getSelectedRow(), 0));
+        System.out.println("id: " + id);
+        try {
+            int dialogButton = JOptionPane.YES_OPTION;
+            JOptionPane.showConfirmDialog(this, "¿Seguro que quieres eliminar esta misión?", "WARNING", dialogButton);
+            if (dialogButton == JOptionPane.YES_OPTION) {
+                Mision mision = new Mision();
+                mision.eliminarMision(id);
+                modelo.removeRow(seleccionada - 1);
+                JOptionPane.showMessageDialog(this, "La misión con id:" + id + " se ha eliminado con éxito");
+                System.out.println("Se ha eliminado");
+            } else {
+                System.out.println("Has decidido no eliminarlo");
+            }
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEliminaMisionRegistradaActionPerformed
+
+    private void btnSalirEliminarCuadernoRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEliminarCuadernoRegistradoActionPerformed
+        panelEliminarCuaderno.setVisible(false);
+    }//GEN-LAST:event_btnSalirEliminarCuadernoRegistradoActionPerformed
+
+    private void btnEliminaCuadernoRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminaCuadernoRegistradoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tableEliminarCuadernoRegistrado.getModel();
+        int seleccionada = tableEliminarCuadernoRegistrado.getSelectedRow() + 1;
+        System.out.println("Fila seleccionada: " + seleccionada);
+        int id = ((int) tableEliminarCuadernoRegistrado.getValueAt(tableEliminarCuadernoRegistrado.getSelectedRow(), 0));
+        System.out.println("id: " + id);
+        try {
+            int dialogButton = JOptionPane.YES_OPTION;
+            JOptionPane.showConfirmDialog(this, "¿Seguro que quieres eliminar este cuaderno?", "WARNING", dialogButton);
+            if (dialogButton == JOptionPane.YES_OPTION) {
+                Cuaderno cuaderno = new Cuaderno();
+                cuaderno.eliminarCuaderno(id);
+                modelo.removeRow(seleccionada - 1);
+                JOptionPane.showMessageDialog(this, "El cuaderno de bitácora con id:" + id + " se ha eliminado");
+                System.out.println("Se ha eliminado");
+            } else {
+                System.out.println("Has decido no eliminarlo");
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnEliminaCuadernoRegistradoActionPerformed
+
+    private void btnSalirActualizarNave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActualizarNave1ActionPerformed
+        panelActualizarTripulante.setVisible(false);
+    }//GEN-LAST:event_btnSalirActualizarNave1ActionPerformed
+
+    private void tableActualizarTripulanteRegistradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableActualizarTripulanteRegistradoMouseClicked
+        JTable table = (JTable) evt.getSource();
+        Point point = evt.getPoint();
+        int fila = table.rowAtPoint(point);
+        if (evt.getClickCount() == 1) {
+            txtIdTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 0).toString());
+            txtIdTripulanteSeleccionado.setEditable(false);
+            txtNombreTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 1).toString());
+            txtCargoTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 2).toString());
+            txtGeneroTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 3).toString());
+            txtExperienciaTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 4).toString());
+            txtOrigenTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 5).toString());
+            txtRazaTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 6).toString());
+            txtEdadTripulanteSeleccionado.setText(tableActualizarTripulanteRegistrado.getValueAt(tableActualizarTripulanteRegistrado.getSelectedRow(), 7).toString());
+            Nave nave = new Nave();
+            nave.rellenarCombo(comboIdNaveTripulanteSeleccionado);
+        }
+    }//GEN-LAST:event_tableActualizarTripulanteRegistradoMouseClicked
+
+    private void btnActualizaTripulanteRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizaTripulanteRegistradoActionPerformed
+        try {
+            Tripulante tripulante = new Tripulante();
+            tripulante.actualizar(panelActualizarTripulante, txtIdTripulanteSeleccionado, txtNombreTripulanteSeleccionado, txtCargoTripulanteSeleccionado, txtGeneroTripulanteSeleccionado, txtExperienciaTripulanteSeleccionado, txtOrigenTripulanteSeleccionado, txtRazaTripulanteSeleccionado, txtEdadTripulanteSeleccionado, comboIdNaveTripulanteSeleccionado);
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarTripulanteRegistrado.getModel();
+            TripulanteDAO.getInstance().listar(modelo);
+        } catch (Exception ex) {
+            System.out.println("Error en el catch del menú, busca: actualizar un tripulante");
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnActualizaTripulanteRegistradoActionPerformed
+
+    private void btnSalirActualizarMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActualizarMisionActionPerformed
+        panelActualizarMision.setVisible(false);
+    }//GEN-LAST:event_btnSalirActualizarMisionActionPerformed
+
+    private void tableActualizarMisiónRegistradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableActualizarMisiónRegistradaMouseClicked
+        JTable table = (JTable) evt.getSource();
+        Point point = evt.getPoint();
+        int fila = table.rowAtPoint(point);
+        if (evt.getClickCount() == 1) {
+            txtIdMisionSeleccionada.setText(tableActualizarMisiónRegistrada.getValueAt(tableActualizarMisiónRegistrada.getSelectedRow(), 0).toString());
+            txtIdMisionSeleccionada.setEditable(false);
+            txtNombreMisionSeleccionado.setText(tableActualizarMisiónRegistrada.getValueAt(tableActualizarMisiónRegistrada.getSelectedRow(), 1).toString());
+            txtDescripcionMisionSeleccionada.setText(tableActualizarMisiónRegistrada.getValueAt(tableActualizarMisiónRegistrada.getSelectedRow(), 2).toString());
+            Nave nave = new Nave();
+            nave.rellenarCombo(comboNaveMisionSeleccionada);
+        }
+    }//GEN-LAST:event_tableActualizarMisiónRegistradaMouseClicked
+
+    private void btnActualizarMisionRegistradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarMisionRegistradaActionPerformed
+        try {
+            Mision mision = new Mision();
+            mision.actualizar(panelActualizarMision, txtIdMisionSeleccionada, txtNombreMisionSeleccionado, txtDescripcionMisionSeleccionada, comboNaveMisionSeleccionada);
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarMisiónRegistrada.getModel();
+            MisionDAO.getInstance().listar(modelo);
+        } catch (Exception ex) {
+            System.out.println("Error en el catch del menú, busca: actualizar una mision");
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnActualizarMisionRegistradaActionPerformed
+
+    private void btnSalirActualizarCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActualizarCuadernoActionPerformed
+        panelActualizarCuaderno.setVisible(false);
+    }//GEN-LAST:event_btnSalirActualizarCuadernoActionPerformed
+
+    private void tableActualizarCuadernoRegistradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableActualizarCuadernoRegistradoMouseClicked
+        JTable table = (JTable) evt.getSource();
+        Point point = evt.getPoint();
+        int file = table.rowAtPoint(point);
+        if (evt.getClickCount() == 1) {
+            txtIdCuadernoRegistrado.setText(tableActualizarCuadernoRegistrado.getValueAt(tableActualizarCuadernoRegistrado.getSelectedRow(), 0).toString());
+            txtIdCuadernoRegistrado.setEditable(false);
+            txtFechaCuadernoSeleccionada.setText(tableActualizarCuadernoRegistrado.getValueAt(tableActualizarCuadernoRegistrado.getSelectedRow(), 1).toString());
+            txtDescripcionCuadernoSeleccionado.setText(tableActualizarCuadernoRegistrado.getValueAt(tableActualizarCuadernoRegistrado.getSelectedRow(), 2).toString());
+            txtAudioCuadernoSeleccionado.setText(tableActualizarCuadernoRegistrado.getValueAt(tableActualizarCuadernoRegistrado.getSelectedRow(), 3).toString());
+            Nave nave = new Nave();
+            nave.rellenarCombo(comboNaveCuadernoSeleccionado);
+        }
+    }//GEN-LAST:event_tableActualizarCuadernoRegistradoMouseClicked
+
+    private void btnActualizarCuadernoRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCuadernoRegistradoActionPerformed
+        try {
+            Cuaderno cuaderno = new Cuaderno();
+            cuaderno.actualizar(panelActualizarCuaderno, txtIdCuadernoRegistrado, txtFechaCuadernoSeleccionada, txtDescripcionCuadernoSeleccionado, txtAudioCuadernoSeleccionado, comboNaveCuadernoSeleccionado);
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarCuadernoRegistrado.getModel();
+            CuadernoDAO.getInstance().listar(modelo);
+        } catch (Exception ex) {
+            System.out.println("Error en el catch del menú, busca: actualizar un cuaderno");
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnActualizarCuadernoRegistradoActionPerformed
+
+    private void btnActualizarNaveRegistradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarNaveRegistradaActionPerformed
+        try {
+            Nave nave = new Nave();
+            nave.actualizar(panelActualizarNave, txtIdNaveSeleccionada, txtCapitanSeleccionado, txtNombreSeleccionado, txtMatriculaSeleccionado, txtTipoSeleccionado);
+            DefaultTableModel modelo = (DefaultTableModel) tableActualizarNaveRegistrada.getModel();
+            NaveDAO.getInstance().listar(modelo);
+        } catch (Exception ex) {
+            System.out.println("Error en el catch del menú, busca: Holaaaa");
+        }
+    }//GEN-LAST:event_btnActualizarNaveRegistradaActionPerformed
+
+    private void tableActualizarNaveRegistradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableActualizarNaveRegistradaMouseClicked
+        JTable table = (JTable) evt.getSource();
+        Point point = evt.getPoint();
+        int fila = table.rowAtPoint(point);
+        if (evt.getClickCount() == 1) {
+            txtIdNaveSeleccionada.setText(tableActualizarNaveRegistrada.getValueAt(tableActualizarNaveRegistrada.getSelectedRow(), 0).toString());
+            txtIdNaveSeleccionada.setEditable(false);
+            txtCapitanSeleccionado.setText(tableActualizarNaveRegistrada.getValueAt(tableActualizarNaveRegistrada.getSelectedRow(), 1).toString());
+            txtNombreSeleccionado.setText(tableActualizarNaveRegistrada.getValueAt(tableActualizarNaveRegistrada.getSelectedRow(), 2).toString());
+            txtMatriculaSeleccionado.setText(tableActualizarNaveRegistrada.getValueAt(tableActualizarNaveRegistrada.getSelectedRow(), 3).toString());
+            txtTipoSeleccionado.setText(tableActualizarNaveRegistrada.getValueAt(tableActualizarNaveRegistrada.getSelectedRow(), 4).toString());
+        }
+    }//GEN-LAST:event_tableActualizarNaveRegistradaMouseClicked
+
+    private void btnSalirActualizarNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActualizarNaveActionPerformed
+        panelActualizarNave.setVisible(false);
+    }//GEN-LAST:event_btnSalirActualizarNaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,41 +3196,207 @@ public class Index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton benSalirEliminarNaveRegistrada;
+    private javax.swing.JButton benSalirRegistroTripulante1;
+    private javax.swing.JButton benSalirRegistroTripulante3;
+    private javax.swing.JButton benSalirRegistroTripulante4;
+    private javax.swing.JButton btnActualizaTripulanteRegistrado;
+    private javax.swing.JButton btnActualizarCuaderno;
+    private javax.swing.JButton btnActualizarCuadernoRegistrado;
+    private javax.swing.JButton btnActualizarMision;
+    private javax.swing.JButton btnActualizarMisionRegistrada;
+    private javax.swing.JButton btnActualizarNave;
+    private javax.swing.JButton btnActualizarNaveRegistrada;
+    private javax.swing.JButton btnActualizarTripulante;
     private javax.swing.JButton btnAreaUsuarios;
-    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnAñadirCuaderno;
+    private javax.swing.JButton btnAñadirMision;
+    private javax.swing.JButton btnAñadirNave;
+    private javax.swing.JButton btnAñadirTripulante;
     private javax.swing.JButton btnCuaderno;
+    private javax.swing.JButton btnEliminaCuadernoRegistrado;
+    private javax.swing.JButton btnEliminaMisionRegistrada;
+    private javax.swing.JButton btnEliminarCuaderno;
+    private javax.swing.JButton btnEliminarMision;
+    private javax.swing.JButton btnEliminarNave;
+    private javax.swing.JButton btnEliminarNaveRegistrada;
+    private javax.swing.JButton btnEliminarTripulante;
+    private javax.swing.JButton btnEliminarTripulanteRegistrado;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnMision;
     private javax.swing.JButton btnNave;
-    private javax.swing.JButton btnSubActualizarCuaderno;
-    private javax.swing.JButton btnSubActualizarMision;
-    private javax.swing.JButton btnSubActualizarNave;
-    private javax.swing.JButton btnSubActualizarTripulante;
-    private javax.swing.JButton btnSubAnadirCuaderno;
-    private javax.swing.JButton btnSubAnadirMision;
-    private javax.swing.JButton btnSubAnadirNave;
-    private javax.swing.JButton btnSubAnadirTripulante;
-    private javax.swing.JButton btnSubEliminarCuaderno;
-    private javax.swing.JButton btnSubEliminarMision;
-    private javax.swing.JButton btnSubEliminarNave;
-    private javax.swing.JButton btnSubEliminarTripulante;
-    private javax.swing.JButton btnSubListarCuaderno;
-    private javax.swing.JButton btnSubListarMision;
-    private javax.swing.JButton btnSubListarNave;
-    private javax.swing.JButton btnSubListarTripulante;
+    private javax.swing.JButton btnRegistrarCuaderno;
+    private javax.swing.JButton btnRegistrarMision;
+    private javax.swing.JButton btnRegistrarNave;
+    private javax.swing.JButton btnRegistrarTripulante;
+    private javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JButton btnSalirActualizarCuaderno;
+    private javax.swing.JButton btnSalirActualizarMision;
+    private javax.swing.JButton btnSalirActualizarNave;
+    private javax.swing.JButton btnSalirActualizarNave1;
+    private javax.swing.JButton btnSalirEliminarCuadernoRegistrado;
+    private javax.swing.JButton btnSalirEliminarMisionRegistrada;
+    private javax.swing.JButton btnSalirEliminarTripulanteRegistrado;
+    private javax.swing.JButton btnSalirListadoTripulante;
+    private javax.swing.JButton btnSalirRegistroCuaderno;
+    private javax.swing.JButton btnSalirRegistroMision;
+    private javax.swing.JButton btnSalirRegistroNave;
+    private javax.swing.JButton btnSalirRegistroTripulante;
     private javax.swing.JButton btnTripulante;
+    private javax.swing.JButton btnVerCuaderno;
+    private javax.swing.JButton btnVerMision;
+    private javax.swing.JButton btnVerNave;
+    private javax.swing.JButton btnVerTripulante;
+    private javax.swing.JComboBox<String> comboIdNaveTripulanteSeleccionado;
+    private javax.swing.JComboBox<String> comboNaveCuaderno;
+    private javax.swing.JComboBox<String> comboNaveCuadernoSeleccionado;
+    private javax.swing.JComboBox<String> comboNaveMision;
+    private javax.swing.JComboBox<String> comboNaveMisionSeleccionada;
+    private javax.swing.JComboBox<String> comboNaveTripulante;
     private javax.swing.JLabel iconEscuela;
     private javax.swing.JLabel iconGmail;
     private javax.swing.JLabel iconLinkedin;
     private javax.swing.JLabel iconTrabajo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JPanel panelActualizarCuaderno;
+    private javax.swing.JPanel panelActualizarMision;
+    private javax.swing.JPanel panelActualizarNave;
+    private javax.swing.JPanel panelActualizarTripulante;
     private javax.swing.JPanel panelBotonesAbajo;
     private javax.swing.JPanel panelBotonesArriba;
     private javax.swing.JPanel panelCentro;
-    private javax.swing.JPanel subPanelCuaderno;
-    private javax.swing.JPanel subPanelMision;
-    private javax.swing.JPanel subPanelNave;
-    private javax.swing.JPanel subPanelTripulante;
-    private javax.swing.JPanel subPanelUsuario;
+    private javax.swing.JPanel panelCerrarSesion;
+    private javax.swing.JPanel panelCuaderno;
+    private javax.swing.JPanel panelEliminarCuaderno;
+    private javax.swing.JPanel panelEliminarMision;
+    private javax.swing.JPanel panelEliminarNave;
+    private javax.swing.JPanel panelEliminarTripulante;
+    private javax.swing.JPanel panelMision;
+    private javax.swing.JPanel panelNave;
+    private javax.swing.JPanel panelRegistrarCuaderno;
+    private javax.swing.JPanel panelRegistrarMision;
+    private javax.swing.JPanel panelRegistrarNave;
+    private javax.swing.JPanel panelRegistrarTripulante;
+    private javax.swing.JPanel panelTripulante;
+    private javax.swing.JPanel panelUsuarios;
+    private javax.swing.JPanel panelVerCuaderno;
+    private javax.swing.JPanel panelVerMision;
+    private javax.swing.JPanel panelVerNave;
+    private javax.swing.JPanel panelVerTripulante;
+    private javax.swing.JTable tableActualizarCuadernoRegistrado;
+    private javax.swing.JTable tableActualizarMisiónRegistrada;
+    private javax.swing.JTable tableActualizarNaveRegistrada;
+    private javax.swing.JTable tableActualizarTripulanteRegistrado;
+    private javax.swing.JTable tableEliminarCuadernoRegistrado;
+    private javax.swing.JTable tableEliminarMisionRegistrada;
+    private javax.swing.JTable tableEliminarNaveRegistrada;
+    private javax.swing.JTable tableEliminarTripulanteRegistrado;
+    private javax.swing.JTable tableListaCuaderno;
+    private javax.swing.JTable tableListaMision;
+    private javax.swing.JTable tableListaNaves;
+    private javax.swing.JTable tableListaTripulante;
+    private javax.swing.JTextField txtAudioCuaderno;
+    private javax.swing.JTextField txtAudioCuadernoSeleccionado;
+    private javax.swing.JTextField txtCapitanNave;
+    private javax.swing.JTextField txtCapitanSeleccionado;
+    private javax.swing.JTextField txtCargoTripulante;
+    private javax.swing.JTextField txtCargoTripulanteSeleccionado;
+    private javax.swing.JTextArea txtDescripcionCuaderno;
+    private javax.swing.JTextArea txtDescripcionCuadernoSeleccionado;
+    private javax.swing.JTextArea txtDescripcionMision;
+    private javax.swing.JTextArea txtDescripcionMisionSeleccionada;
+    private javax.swing.JTextField txtEdadTripulanteSeleccionado;
+    private javax.swing.JTextField txtExperienciaTripulante;
+    private javax.swing.JTextField txtExperienciaTripulanteSeleccionado;
+    private javax.swing.JTextField txtFechaCuaderno;
+    private javax.swing.JTextField txtFechaCuadernoSeleccionada;
+    private javax.swing.JTextField txtGeneroTripulante;
+    private javax.swing.JTextField txtGeneroTripulanteSeleccionado;
+    private javax.swing.JTextField txtIdCuadernoRegistrado;
+    private javax.swing.JTextField txtIdMisionSeleccionada;
+    private javax.swing.JTextField txtIdNaveSeleccionada;
+    private javax.swing.JTextField txtIdTripulanteSeleccionado;
+    private javax.swing.JTextField txtMatriculaNave;
+    private javax.swing.JTextField txtMatriculaSeleccionado;
+    private javax.swing.JTextField txtNombreMision;
+    private javax.swing.JTextField txtNombreMisionSeleccionado;
+    private javax.swing.JTextField txtNombreNave;
+    private javax.swing.JTextField txtNombreNuevo;
+    private javax.swing.JTextField txtNombreSeleccionado;
+    private javax.swing.JTextField txtNombreTripulante;
+    private javax.swing.JTextField txtNombreTripulanteSeleccionado;
+    private javax.swing.JTextField txtOrigenTripulante;
+    private javax.swing.JTextField txtOrigenTripulanteSeleccionado;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtPassNuevo;
+    private javax.swing.JTextField txtRazaTripulante;
+    private javax.swing.JTextField txtRazaTripulanteSeleccionado;
+    private javax.swing.JTextField txtTipoNave;
+    private javax.swing.JTextField txtTipoSeleccionado;
+    private javax.swing.JTextField txtTipoTripulante;
+    private javax.swing.JTextField txtUser;
+    private javax.swing.JTextField txtUsuarioNuevo;
     // End of variables declaration//GEN-END:variables
 }
