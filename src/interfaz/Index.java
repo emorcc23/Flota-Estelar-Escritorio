@@ -356,17 +356,17 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
                 .addComponent(btnAreaUsuarios)
-                .addGap(58, 58, 58)
+                .addGap(49, 49, 49)
                 .addComponent(btnNave)
-                .addGap(97, 97, 97)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTripulante)
-                .addGap(97, 97, 97)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMision)
-                .addGap(105, 105, 105)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCuaderno)
-                .addGap(48, 48, 48))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBotonesArribaLayout.setVerticalGroup(
             panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,13 +374,13 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
                     .addGroup(panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
                         .addComponent(btnAreaUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnCuaderno)))
                 .addContainerGap())
         );
 
@@ -545,7 +545,7 @@ public class Index extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel4.setText("Registrar Nave");
 
-        btnSalirRegistroNave.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroNave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirRegistroNave.setContentAreaFilled(false);
         btnSalirRegistroNave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -633,7 +633,7 @@ public class Index extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel5.setText("Registrar un nuevo tripulante");
 
-        btnSalirRegistroTripulante.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroTripulante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirRegistroTripulante.setContentAreaFilled(false);
         btnSalirRegistroTripulante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -769,7 +769,7 @@ public class Index extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel7.setText("Registrar una nueva misión");
 
-        btnSalirRegistroMision.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroMision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirRegistroMision.setContentAreaFilled(false);
         btnSalirRegistroMision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -856,7 +856,7 @@ public class Index extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel8.setText("Registrar un nuevo cuaderno");
 
-        btnSalirRegistroCuaderno.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirRegistroCuaderno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirRegistroCuaderno.setContentAreaFilled(false);
         btnSalirRegistroCuaderno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1315,7 +1315,7 @@ public class Index extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel9.setText("Listado de naves");
 
-        benSalirRegistroTripulante1.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirRegistroTripulante1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         benSalirRegistroTripulante1.setContentAreaFilled(false);
         benSalirRegistroTripulante1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1377,7 +1377,7 @@ public class Index extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel10.setText("Listado de tripulantes");
 
-        btnSalirListadoTripulante.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirListadoTripulante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirListadoTripulante.setContentAreaFilled(false);
         btnSalirListadoTripulante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1439,7 +1439,7 @@ public class Index extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel11.setText("Listado de misiones");
 
-        benSalirRegistroTripulante3.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirRegistroTripulante3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         benSalirRegistroTripulante3.setContentAreaFilled(false);
         benSalirRegistroTripulante3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1501,7 +1501,7 @@ public class Index extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel12.setText("Listado de cuadernos");
 
-        benSalirRegistroTripulante4.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirRegistroTripulante4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         benSalirRegistroTripulante4.setContentAreaFilled(false);
         benSalirRegistroTripulante4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1563,7 +1563,7 @@ public class Index extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel13.setText("Selecciona una nave para eliminarla");
 
-        benSalirEliminarNaveRegistrada.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        benSalirEliminarNaveRegistrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         benSalirEliminarNaveRegistrada.setContentAreaFilled(false);
         benSalirEliminarNaveRegistrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1644,7 +1644,7 @@ public class Index extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel14.setText("Selecciona un tripulante para eliminarlo");
 
-        btnSalirEliminarTripulanteRegistrado.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirEliminarTripulanteRegistrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirEliminarTripulanteRegistrado.setContentAreaFilled(false);
         btnSalirEliminarTripulanteRegistrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1725,7 +1725,7 @@ public class Index extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel15.setText("Selecciona una misión para eliminarla");
 
-        btnSalirEliminarMisionRegistrada.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirEliminarMisionRegistrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirEliminarMisionRegistrada.setContentAreaFilled(false);
         btnSalirEliminarMisionRegistrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1806,7 +1806,7 @@ public class Index extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel16.setText("Selecciona un cuaderno de bitácora para eliminarlo");
 
-        btnSalirEliminarCuadernoRegistrado.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirEliminarCuadernoRegistrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirEliminarCuadernoRegistrado.setContentAreaFilled(false);
         btnSalirEliminarCuadernoRegistrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1887,7 +1887,7 @@ public class Index extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel17.setText("Selecciona una nave para actualizarla");
 
-        btnSalirActualizarNave.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarNave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirActualizarNave.setContentAreaFilled(false);
         btnSalirActualizarNave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1992,7 +1992,7 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(txtMatriculaSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTipoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIdNaveSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(290, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelActualizarNaveLayout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -2036,13 +2036,13 @@ public class Index extends javax.swing.JFrame {
         panelActualizarNave.setBounds(80, 10, 1060, 550);
 
         panelActualizarTripulante.setBackground(new java.awt.Color(250, 250, 250));
-        panelActualizarTripulante.setMaximumSize(new java.awt.Dimension(1350, 650));
+        panelActualizarTripulante.setMaximumSize(new java.awt.Dimension(1003, 650));
         panelActualizarTripulante.setMinimumSize(new java.awt.Dimension(1350, 650));
 
         jLabel23.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel23.setText("Selecciona una tripulante para actualizarlo");
 
-        btnSalirActualizarNave1.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarNave1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirActualizarNave1.setContentAreaFilled(false);
         btnSalirActualizarNave1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2167,7 +2167,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel25)
                     .addComponent(txtIdTripulanteSeleccionado)
                     .addComponent(jLabel24))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2219,42 +2219,43 @@ public class Index extends javax.swing.JFrame {
             panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarTripulanteLayout.createSequentialGroup()
                 .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
-                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnActualizaTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55))
-                            .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jScrollPane13))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelActualizarTripulanteLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalirActualizarNave1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
+                        .addComponent(jLabel23))
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelActualizarTripulanteLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelActualizarTripulanteLayout.createSequentialGroup()
+                            .addGap(273, 273, 273)
+                            .addComponent(btnSalirActualizarNave1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(btnActualizaTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(357, Short.MAX_VALUE))
         );
         panelActualizarTripulanteLayout.setVerticalGroup(
             panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel23)
-                    .addComponent(btnSalirActualizarNave1))
-                .addGap(18, 18, 18)
-                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelActualizarTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
-                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(btnActualizaTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addComponent(jScrollPane12)))
+                        .addComponent(btnSalirActualizarNave1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizaTripulanteRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelActualizarTripulanteLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane12)))
+                .addGap(0, 122, Short.MAX_VALUE))
         );
 
         panelCentro.add(panelActualizarTripulante);
-        panelActualizarTripulante.setBounds(150, 130, 1350, 650);
+        panelActualizarTripulante.setBounds(120, 20, 1010, 530);
 
         panelActualizarMision.setBackground(new java.awt.Color(250, 250, 250));
         panelActualizarMision.setMaximumSize(new java.awt.Dimension(1350, 650));
@@ -2263,7 +2264,7 @@ public class Index extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel33.setText("Selecciona una misión para actualizarla");
 
-        btnSalirActualizarMision.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarMision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirActualizarMision.setContentAreaFilled(false);
         btnSalirActualizarMision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2343,42 +2344,45 @@ public class Index extends javax.swing.JFrame {
             .addGroup(panelActualizarMisionLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(369, 369, 369)
                 .addComponent(btnSalirActualizarMision, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarMisionLayout.createSequentialGroup()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnActualizarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))
-                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboNaveMisionSeleccionada, 0, 282, Short.MAX_VALUE)
-                            .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel36)
-                            .addComponent(txtNombreMisionSeleccionado)
+                    .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboNaveMisionSeleccionada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane15)
+                        .addComponent(jLabel35)
+                        .addComponent(jLabel34)
+                        .addComponent(jLabel36)
+                        .addComponent(txtNombreMisionSeleccionado)
+                        .addGroup(panelActualizarMisionLayout.createSequentialGroup()
                             .addComponent(jLabel37)
-                            .addComponent(txtIdMisionSeleccionada))
-                        .addContainerGap(54, Short.MAX_VALUE))))
+                            .addGap(267, 267, 267))
+                        .addComponent(txtIdMisionSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelActualizarMisionLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btnActualizarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 479, Short.MAX_VALUE))
         );
         panelActualizarMisionLayout.setVerticalGroup(
             panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelActualizarMisionLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel33)
-                    .addComponent(btnSalirActualizarMision))
                 .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelActualizarMisionLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane14))
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel33)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarMisionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSalirActualizarMision)
+                        .addGap(8, 8, 8)))
+                .addGroup(panelActualizarMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelActualizarMisionLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdMisionSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2394,13 +2398,13 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jLabel36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboNaveMisionSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addComponent(btnActualizarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizarMisionRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelCentro.add(panelActualizarMision);
-        panelActualizarMision.setBounds(150, 130, 1350, 650);
+        panelActualizarMision.setBounds(150, 10, 940, 550);
 
         panelActualizarCuaderno.setBackground(new java.awt.Color(250, 250, 250));
         panelActualizarCuaderno.setMaximumSize(new java.awt.Dimension(1350, 650));
@@ -2409,7 +2413,7 @@ public class Index extends javax.swing.JFrame {
         jLabel38.setFont(new java.awt.Font("Euphemia", 0, 24)); // NOI18N
         jLabel38.setText("Selecciona un cuaderno para actualizarlo");
 
-        btnSalirActualizarCuaderno.setIcon(new javax.swing.ImageIcon("D:\\DELL\\Proyectos\\NetBeans\\FlotaEstelarDEV2\\Imagenes\\letra-x.png")); // NOI18N
+        btnSalirActualizarCuaderno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/letra-x.png"))); // NOI18N
         btnSalirActualizarCuaderno.setContentAreaFilled(false);
         btnSalirActualizarCuaderno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2493,70 +2497,71 @@ public class Index extends javax.swing.JFrame {
         panelActualizarCuadernoLayout.setHorizontalGroup(
             panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalirActualizarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarCuadernoLayout.createSequentialGroup()
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnActualizarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))
+                        .addComponent(jLabel38)
+                        .addGap(611, 611, 611)
+                        .addComponent(btnSalirActualizarCuaderno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel43)
-                            .addComponent(comboNaveCuadernoSeleccionado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                             .addComponent(jLabel40)
                             .addComponent(jLabel39)
-                            .addComponent(jLabel41)
                             .addComponent(txtFechaCuadernoSeleccionada)
                             .addComponent(jLabel42)
-                            .addComponent(txtIdCuadernoRegistrado)
-                            .addComponent(txtAudioCuadernoSeleccionado))
-                        .addContainerGap(54, Short.MAX_VALUE))))
+                            .addComponent(txtIdCuadernoRegistrado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAudioCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel43)
+                            .addComponent(comboNaveCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel41)
+                            .addComponent(btnActualizarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         panelActualizarCuadernoLayout.setVerticalGroup(
             panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel38)
-                    .addComponent(btnSalirActualizarCuaderno))
-                .addGap(18, 18, 18)
                 .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
-                        .addComponent(jLabel42)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel38)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarCuadernoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSalirActualizarCuaderno)
+                        .addGap(3, 3, 3)))
+                .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarCuadernoLayout.createSequentialGroup()
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel42)
+                            .addComponent(jLabel43))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIdCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAudioCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel39)
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel41))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaCuadernoSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaCuadernoSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboNaveCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel40)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel43)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAudioCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel41)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboNaveCuadernoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(btnActualizarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addComponent(jScrollPane16)))
+                        .addGroup(panelActualizarCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnActualizarCuadernoRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         panelCentro.add(panelActualizarCuaderno);
-        panelActualizarCuaderno.setBounds(150, 130, 1350, 650);
+        panelActualizarCuaderno.setBounds(25, 35, 1200, 490);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
