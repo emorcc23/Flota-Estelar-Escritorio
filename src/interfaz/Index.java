@@ -33,6 +33,7 @@ public class Index extends javax.swing.JFrame {
     public Index() {
         initComponents();
         cerrarPaneles();
+        bloquearBotones();
     }
 
     public void cerrarPaneles() {
@@ -421,11 +422,26 @@ public class Index extends javax.swing.JFrame {
         txtNombreNuevo.setForeground(new java.awt.Color(153, 153, 153));
         txtNombreNuevo.setText(" Tu nombre *");
         txtNombreNuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtNombreNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreNuevoMouseClicked(evt);
+            }
+        });
+        txtNombreNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreNuevoActionPerformed(evt);
+            }
+        });
 
         txtUsuarioNuevo.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
         txtUsuarioNuevo.setForeground(new java.awt.Color(153, 153, 153));
         txtUsuarioNuevo.setText(" Tu nombre de usuario *");
         txtUsuarioNuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtUsuarioNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUsuarioNuevoMouseClicked(evt);
+            }
+        });
         txtUsuarioNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioNuevoActionPerformed(evt);
@@ -436,11 +452,21 @@ public class Index extends javax.swing.JFrame {
         txtPassNuevo.setForeground(new java.awt.Color(153, 153, 153));
         txtPassNuevo.setText(" Tu contraseña *");
         txtPassNuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtPassNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPassNuevoMouseClicked(evt);
+            }
+        });
 
         txtUser.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
         txtUser.setForeground(new java.awt.Color(153, 153, 153));
         txtUser.setText(" Tu nombre de usuario *");
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUserMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Euphemia", 0, 22)); // NOI18N
         jLabel3.setText("Entrar en mi cuenta");
@@ -484,6 +510,11 @@ public class Index extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
         txtPass.setForeground(new java.awt.Color(153, 153, 153));
         txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPassMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
         panelUsuarios.setLayout(panelUsuariosLayout);
@@ -556,18 +587,38 @@ public class Index extends javax.swing.JFrame {
         txtCapitanNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtCapitanNave.setForeground(new java.awt.Color(102, 102, 102));
         txtCapitanNave.setText("  Capitán de la Nave *");
+        txtCapitanNave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCapitanNaveMouseClicked(evt);
+            }
+        });
 
         txtNombreNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtNombreNave.setForeground(new java.awt.Color(102, 102, 102));
         txtNombreNave.setText("  Nombre de la Nave *");
+        txtNombreNave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreNaveMouseClicked(evt);
+            }
+        });
 
         txtMatriculaNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtMatriculaNave.setForeground(new java.awt.Color(102, 102, 102));
         txtMatriculaNave.setText("  Matrícula de la Nave *");
+        txtMatriculaNave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatriculaNaveMouseClicked(evt);
+            }
+        });
 
         txtTipoNave.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtTipoNave.setForeground(new java.awt.Color(102, 102, 102));
         txtTipoNave.setText("  Tipo de la nave *");
+        txtTipoNave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTipoNaveMouseClicked(evt);
+            }
+        });
 
         btnRegistrarNave.setBackground(new java.awt.Color(113, 113, 113));
         btnRegistrarNave.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
@@ -644,18 +695,38 @@ public class Index extends javax.swing.JFrame {
         txtNombreTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtNombreTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtNombreTripulante.setText("  Nombre del tripulante *");
+        txtNombreTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreTripulanteMouseClicked(evt);
+            }
+        });
 
         txtGeneroTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtGeneroTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtGeneroTripulante.setText("  Género del tripulante *");
+        txtGeneroTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGeneroTripulanteMouseClicked(evt);
+            }
+        });
 
         txtOrigenTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtOrigenTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtOrigenTripulante.setText("  Origen del tripulante *");
+        txtOrigenTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtOrigenTripulanteMouseClicked(evt);
+            }
+        });
 
         txtTipoTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtTipoTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtTipoTripulante.setText("  Edad del tripulante *");
+        txtTipoTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTipoTripulanteMouseClicked(evt);
+            }
+        });
 
         btnRegistrarTripulante.setBackground(new java.awt.Color(113, 113, 113));
         btnRegistrarTripulante.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
@@ -672,14 +743,29 @@ public class Index extends javax.swing.JFrame {
         txtCargoTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtCargoTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtCargoTripulante.setText("  Cargo del tripulante *");
+        txtCargoTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCargoTripulanteMouseClicked(evt);
+            }
+        });
 
         txtExperienciaTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtExperienciaTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtExperienciaTripulante.setText("  Experiencia del tripulante *");
+        txtExperienciaTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtExperienciaTripulanteMouseClicked(evt);
+            }
+        });
 
         txtRazaTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtRazaTripulante.setForeground(new java.awt.Color(102, 102, 102));
         txtRazaTripulante.setText("  Raza del tripulante *");
+        txtRazaTripulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtRazaTripulanteMouseClicked(evt);
+            }
+        });
 
         comboNaveTripulante.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         comboNaveTripulante.setForeground(new java.awt.Color(112, 112, 112));
@@ -780,6 +866,11 @@ public class Index extends javax.swing.JFrame {
         txtNombreMision.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtNombreMision.setForeground(new java.awt.Color(102, 102, 102));
         txtNombreMision.setText("  Nombre de la misión *");
+        txtNombreMision.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMisionMouseClicked(evt);
+            }
+        });
 
         btnRegistrarMision.setBackground(new java.awt.Color(113, 113, 113));
         btnRegistrarMision.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
@@ -798,6 +889,11 @@ public class Index extends javax.swing.JFrame {
         txtDescripcionMision.setForeground(new java.awt.Color(112, 112, 112));
         txtDescripcionMision.setRows(5);
         txtDescripcionMision.setText("  Introduce aquí una breve descripción de la misión *\n");
+        txtDescripcionMision.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDescripcionMisionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtDescripcionMision);
 
         comboNaveMision.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
@@ -881,6 +977,11 @@ public class Index extends javax.swing.JFrame {
         txtDescripcionCuaderno.setForeground(new java.awt.Color(112, 112, 112));
         txtDescripcionCuaderno.setRows(5);
         txtDescripcionCuaderno.setText("  Introduce aquí una breve descripción del cuaderno *\n");
+        txtDescripcionCuaderno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDescripcionCuadernoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(txtDescripcionCuaderno);
 
         comboNaveCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
@@ -895,10 +996,20 @@ public class Index extends javax.swing.JFrame {
         txtFechaCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtFechaCuaderno.setForeground(new java.awt.Color(102, 102, 102));
         txtFechaCuaderno.setText("  Fecha de la misión *");
+        txtFechaCuaderno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFechaCuadernoMouseClicked(evt);
+            }
+        });
 
         txtAudioCuaderno.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         txtAudioCuaderno.setForeground(new java.awt.Color(102, 102, 102));
         txtAudioCuaderno.setText("  Audio del cuaderno *");
+        txtAudioCuaderno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAudioCuadernoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRegistrarCuadernoLayout = new javax.swing.GroupLayout(panelRegistrarCuaderno);
         panelRegistrarCuaderno.setLayout(panelRegistrarCuadernoLayout);
@@ -1960,6 +2071,7 @@ public class Index extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
         jLabel22.setText("ID");
 
+        txtIdNaveSeleccionada.setEditable(false);
         txtIdNaveSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
         txtIdNaveSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
 
@@ -2006,7 +2118,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(btnSalirActualizarNave))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelActualizarNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarNaveLayout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2027,7 +2139,7 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTipoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                         .addComponent(btnActualizarNaveRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))))
         );
@@ -2091,6 +2203,7 @@ public class Index extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
         jLabel24.setText("ID");
 
+        txtIdTripulanteSeleccionado.setEditable(false);
         txtIdTripulanteSeleccionado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
         txtIdTripulanteSeleccionado.setForeground(new java.awt.Color(112, 112, 112));
 
@@ -2325,6 +2438,7 @@ public class Index extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
         jLabel37.setText("ID");
 
+        txtIdMisionSeleccionada.setEditable(false);
         txtIdMisionSeleccionada.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
         txtIdMisionSeleccionada.setForeground(new java.awt.Color(112, 112, 112));
 
@@ -2474,6 +2588,7 @@ public class Index extends javax.swing.JFrame {
         jLabel42.setFont(new java.awt.Font("Euphemia", 0, 16)); // NOI18N
         jLabel42.setText("ID");
 
+        txtIdCuadernoRegistrado.setEditable(false);
         txtIdCuadernoRegistrado.setFont(new java.awt.Font("Euphemia", 0, 15)); // NOI18N
         txtIdCuadernoRegistrado.setForeground(new java.awt.Color(112, 112, 112));
 
@@ -2593,6 +2708,22 @@ public class Index extends javax.swing.JFrame {
             panelNave.setVisible(false);
             panelMision.setVisible(false);
             panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
         }
     }//GEN-LAST:event_btnTripulanteActionPerformed
 
@@ -2605,6 +2736,22 @@ public class Index extends javax.swing.JFrame {
             panelTripulante.setVisible(false);
             panelMision.setVisible(false);
             panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
         }
     }//GEN-LAST:event_btnNaveActionPerformed
 
@@ -2617,6 +2764,22 @@ public class Index extends javax.swing.JFrame {
             panelTripulante.setVisible(false);
             panelMision.setVisible(false);
             panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
         }
     }//GEN-LAST:event_btnAreaUsuariosActionPerformed
 
@@ -2629,6 +2792,23 @@ public class Index extends javax.swing.JFrame {
             panelNave.setVisible(false);
             panelTripulante.setVisible(false);
             panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         }
     }//GEN-LAST:event_btnMisionActionPerformed
 
@@ -2641,6 +2821,22 @@ public class Index extends javax.swing.JFrame {
             panelNave.setVisible(false);
             panelTripulante.setVisible(false);
             panelMision.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
         }
     }//GEN-LAST:event_btnCuadernoActionPerformed
 
@@ -2723,6 +2919,26 @@ public class Index extends javax.swing.JFrame {
             NaveDAO.getInstance().listar(modelo);
             panelEliminarNave.setVisible(true);
             panelNave.setVisible(false);
+            
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (Exception ex) {
             System.out.println("Se ha producido un error al intentar abrir eliminar nave. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2735,6 +2951,25 @@ public class Index extends javax.swing.JFrame {
         panelNave.setVisible(false);
         Nave nave = new Nave();
         nave.rellenarCombo(comboNaveMision);
+        
+        panelTripulante.setVisible(false);
+        panelMision.setVisible(false);
+        panelCuaderno.setVisible(false);
+        panelRegistrarTripulante.setVisible(false);
+        panelRegistrarMision.setVisible(false);
+        panelRegistrarCuaderno.setVisible(false);
+        panelVerNave.setVisible(false);
+        panelVerTripulante.setVisible(false);
+        panelVerMision.setVisible(false);
+        panelVerCuaderno.setVisible(false);
+        panelActualizarNave.setVisible(false);
+        panelActualizarTripulante.setVisible(false);
+        panelActualizarMision.setVisible(false);
+        panelActualizarCuaderno.setVisible(false);
+        panelEliminarNave.setVisible(false);
+        panelEliminarTripulante.setVisible(false);
+        panelEliminarMision.setVisible(false);
+        panelEliminarCuaderno.setVisible(false);
     }//GEN-LAST:event_btnAñadirNaveActionPerformed
 
     private void btnVerNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerNaveActionPerformed
@@ -2743,6 +2978,26 @@ public class Index extends javax.swing.JFrame {
             NaveDAO.getInstance().listar(modelo);
             panelVerNave.setVisible(true);
             panelNave.setVisible(false);
+            
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (SQLException ex) {
             System.out.println("Se ha producido un error al intentar abrir listar naves. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido.");
@@ -2755,6 +3010,26 @@ public class Index extends javax.swing.JFrame {
             NaveDAO.getInstance().listar(modelo);
             panelActualizarNave.setVisible(true);
             panelNave.setVisible(false);
+            
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (Exception ex) {
             System.out.println("Se ha producido un error al intentar abrir actualizar nave. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2768,6 +3043,26 @@ public class Index extends javax.swing.JFrame {
             TripulanteDAO.getInstance().listar(modelo);
             panelEliminarTripulante.setVisible(true);
             panelTripulante.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (Exception ex) {
             System.out.println("Se ha producido un error al intentar abrir eliminar nave. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2780,6 +3075,25 @@ public class Index extends javax.swing.JFrame {
         panelTripulante.setVisible(false);
         Nave nave = new Nave();
         nave.rellenarCombo(comboNaveTripulante);
+        
+        panelNave.setVisible(false);
+        panelMision.setVisible(false);
+        panelCuaderno.setVisible(false);
+        panelRegistrarNave.setVisible(false);
+        panelRegistrarMision.setVisible(false);
+        panelRegistrarCuaderno.setVisible(false);
+        panelVerNave.setVisible(false);
+        panelVerTripulante.setVisible(false);
+        panelVerMision.setVisible(false);
+        panelVerCuaderno.setVisible(false);
+        panelActualizarNave.setVisible(false);
+        panelActualizarTripulante.setVisible(false);
+        panelActualizarMision.setVisible(false);
+        panelActualizarCuaderno.setVisible(false);
+        panelEliminarNave.setVisible(false);
+        panelEliminarTripulante.setVisible(false);
+        panelEliminarMision.setVisible(false);
+        panelEliminarCuaderno.setVisible(false);
     }//GEN-LAST:event_btnAñadirTripulanteActionPerformed
 
     private void btnVerTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTripulanteActionPerformed
@@ -2788,6 +3102,26 @@ public class Index extends javax.swing.JFrame {
             TripulanteDAO.getInstance().listar(modelo);
             panelVerTripulante.setVisible(true);
             panelTripulante.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (SQLException ex) {
             System.out.println("Se ha producido un error al intentar abrir listar tripulante. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido.");
@@ -2800,6 +3134,26 @@ public class Index extends javax.swing.JFrame {
             TripulanteDAO.getInstance().listar(modelo);
             panelActualizarTripulante.setVisible(true);
             panelTripulante.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelMision.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (SQLException ex) {
             System.out.println("Se ha producido un error al intentar abrir actualizar tripulante. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2813,6 +3167,26 @@ public class Index extends javax.swing.JFrame {
             MisionDAO.getInstance().listar(modelo);
             panelEliminarMision.setVisible(true);
             panelMision.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (Exception ex) {
             System.out.println("Se ha producido un error al intentar abrir eliminar misión. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2825,6 +3199,25 @@ public class Index extends javax.swing.JFrame {
         panelMision.setVisible(false);
         Nave nave = new Nave();
         nave.rellenarCombo(comboNaveMision);
+        
+        panelNave.setVisible(false);
+        panelTripulante.setVisible(false);
+        panelCuaderno.setVisible(false);
+        panelRegistrarNave.setVisible(false);
+        panelRegistrarTripulante.setVisible(false);
+        panelRegistrarCuaderno.setVisible(false);
+        panelVerNave.setVisible(false);
+        panelVerTripulante.setVisible(false);
+        panelVerMision.setVisible(false);
+        panelVerCuaderno.setVisible(false);
+        panelActualizarNave.setVisible(false);
+        panelActualizarTripulante.setVisible(false);
+        panelActualizarMision.setVisible(false);
+        panelActualizarCuaderno.setVisible(false);
+        panelEliminarNave.setVisible(false);
+        panelEliminarTripulante.setVisible(false);
+        panelEliminarMision.setVisible(false);
+        panelEliminarCuaderno.setVisible(false);
     }//GEN-LAST:event_btnAñadirMisionActionPerformed
 
     private void btnVerMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMisionActionPerformed
@@ -2833,6 +3226,25 @@ public class Index extends javax.swing.JFrame {
             MisionDAO.getInstance().listar(modelo);
             panelVerMision.setVisible(true);
             panelMision.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
         } catch (SQLException ex) {
             System.out.println("Se ha producido un error al intentar abrir listar mision. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido.");
@@ -2845,6 +3257,26 @@ public class Index extends javax.swing.JFrame {
             MisionDAO.getInstance().listar(modelo);
             panelActualizarMision.setVisible(true);
             panelMision.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelCuaderno.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (SQLException ex) {
             System.out.println("Se ha producido un error al intentar abrir actualizar misión. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2858,6 +3290,26 @@ public class Index extends javax.swing.JFrame {
             CuadernoDAO.getInstance().listar(modelo);
             panelEliminarCuaderno.setVisible(true);
             panelCuaderno.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            
         } catch (Exception ex) {
             System.out.println("Se ha producido un error al intentar abrir eliminar cuaderno. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2870,6 +3322,26 @@ public class Index extends javax.swing.JFrame {
         panelCuaderno.setVisible(false);
         Nave nave = new Nave();
         nave.rellenarCombo(comboNaveCuaderno);
+        
+        panelNave.setVisible(false);
+        panelTripulante.setVisible(false);
+        panelMision.setVisible(false);
+        panelRegistrarNave.setVisible(false);
+        panelRegistrarTripulante.setVisible(false);
+        panelRegistrarMision.setVisible(false);
+        panelVerNave.setVisible(false);
+        panelVerTripulante.setVisible(false);
+        panelVerMision.setVisible(false);
+        panelVerCuaderno.setVisible(false);
+        panelActualizarNave.setVisible(false);
+        panelActualizarTripulante.setVisible(false);
+        panelActualizarMision.setVisible(false);
+        panelActualizarCuaderno.setVisible(false);
+        panelEliminarNave.setVisible(false);
+        panelEliminarTripulante.setVisible(false);
+        panelEliminarMision.setVisible(false);
+        panelEliminarCuaderno.setVisible(false);
+        
     }//GEN-LAST:event_btnAñadirCuadernoActionPerformed
 
     private void btnVerCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCuadernoActionPerformed
@@ -2878,6 +3350,26 @@ public class Index extends javax.swing.JFrame {
             CuadernoDAO.getInstance().listar(modelo);
             panelVerCuaderno.setVisible(true);
             panelCuaderno.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelActualizarCuaderno.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (Exception ex) {
             System.out.println("Se ha producido un error al intentar abrir listar cuaderno. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -2890,6 +3382,26 @@ public class Index extends javax.swing.JFrame {
             CuadernoDAO.getInstance().listar(modelo);
             panelActualizarCuaderno.setVisible(true);
             panelCuaderno.setVisible(false);
+            
+            panelNave.setVisible(false);
+            panelTripulante.setVisible(false);
+            panelMision.setVisible(false);
+            panelRegistrarNave.setVisible(false);
+            panelRegistrarTripulante.setVisible(false);
+            panelRegistrarMision.setVisible(false);
+            panelRegistrarCuaderno.setVisible(false);
+            panelVerNave.setVisible(false);
+            panelVerTripulante.setVisible(false);
+            panelVerMision.setVisible(false);
+            panelVerCuaderno.setVisible(false);
+            panelActualizarNave.setVisible(false);
+            panelActualizarTripulante.setVisible(false);
+            panelActualizarMision.setVisible(false);
+            panelEliminarNave.setVisible(false);
+            panelEliminarTripulante.setVisible(false);
+            panelEliminarMision.setVisible(false);
+            panelEliminarCuaderno.setVisible(false);
+            
         } catch (SQLException ex) {
             System.out.println("Se ha producido un error al intentar abrir actualizar tripulante. \t Error: " + ex);
             JOptionPane.showMessageDialog(this, "No se ha podido mostrar el contenido");
@@ -3164,6 +3676,94 @@ public class Index extends javax.swing.JFrame {
     private void btnSalirActualizarNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActualizarNaveActionPerformed
         panelActualizarNave.setVisible(false);
     }//GEN-LAST:event_btnSalirActualizarNaveActionPerformed
+
+    private void txtNombreNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreNuevoActionPerformed
+        
+    }//GEN-LAST:event_txtNombreNuevoActionPerformed
+
+    private void txtNombreNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreNuevoMouseClicked
+        txtNombreNuevo.setText("");
+    }//GEN-LAST:event_txtNombreNuevoMouseClicked
+
+    private void txtUsuarioNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioNuevoMouseClicked
+        txtUsuarioNuevo.setText("");
+    }//GEN-LAST:event_txtUsuarioNuevoMouseClicked
+
+    private void txtPassNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassNuevoMouseClicked
+        txtPassNuevo.setText("");
+    }//GEN-LAST:event_txtPassNuevoMouseClicked
+
+    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
+        txtUser.setText("");
+    }//GEN-LAST:event_txtUserMouseClicked
+
+    private void txtPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseClicked
+        txtPass.setText("");
+    }//GEN-LAST:event_txtPassMouseClicked
+
+    private void txtCapitanNaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCapitanNaveMouseClicked
+        txtCapitanNave.setText("");
+    }//GEN-LAST:event_txtCapitanNaveMouseClicked
+
+    private void txtNombreNaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreNaveMouseClicked
+        txtNombreNave.setText("");
+    }//GEN-LAST:event_txtNombreNaveMouseClicked
+
+    private void txtMatriculaNaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatriculaNaveMouseClicked
+        txtMatriculaNave.setText("");
+    }//GEN-LAST:event_txtMatriculaNaveMouseClicked
+
+    private void txtTipoNaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTipoNaveMouseClicked
+        txtTipoNave.setText("");
+    }//GEN-LAST:event_txtTipoNaveMouseClicked
+
+    private void txtNombreTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreTripulanteMouseClicked
+        txtNombreTripulante.setText("");
+    }//GEN-LAST:event_txtNombreTripulanteMouseClicked
+
+    private void txtGeneroTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGeneroTripulanteMouseClicked
+        txtGeneroTripulante.setText("");
+    }//GEN-LAST:event_txtGeneroTripulanteMouseClicked
+
+    private void txtOrigenTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOrigenTripulanteMouseClicked
+        txtOrigenTripulante.setText("");
+    }//GEN-LAST:event_txtOrigenTripulanteMouseClicked
+
+    private void txtTipoTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTipoTripulanteMouseClicked
+        txtTipoTripulante.setText("");
+    }//GEN-LAST:event_txtTipoTripulanteMouseClicked
+
+    private void txtCargoTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCargoTripulanteMouseClicked
+        txtCargoTripulante.setText("");
+    }//GEN-LAST:event_txtCargoTripulanteMouseClicked
+
+    private void txtExperienciaTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtExperienciaTripulanteMouseClicked
+        txtExperienciaTripulante.setText("");
+    }//GEN-LAST:event_txtExperienciaTripulanteMouseClicked
+
+    private void txtRazaTripulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRazaTripulanteMouseClicked
+        txtRazaTripulante.setText("");
+    }//GEN-LAST:event_txtRazaTripulanteMouseClicked
+
+    private void txtNombreMisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMisionMouseClicked
+        txtNombreMision.setText("");
+    }//GEN-LAST:event_txtNombreMisionMouseClicked
+
+    private void txtDescripcionMisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDescripcionMisionMouseClicked
+        txtDescripcionMision.setText("");
+    }//GEN-LAST:event_txtDescripcionMisionMouseClicked
+
+    private void txtFechaCuadernoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFechaCuadernoMouseClicked
+        txtFechaCuaderno.setText("");
+    }//GEN-LAST:event_txtFechaCuadernoMouseClicked
+
+    private void txtDescripcionCuadernoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDescripcionCuadernoMouseClicked
+        txtDescripcionCuaderno.setText("");
+    }//GEN-LAST:event_txtDescripcionCuadernoMouseClicked
+
+    private void txtAudioCuadernoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAudioCuadernoMouseClicked
+        txtAudioCuaderno.setText("");
+    }//GEN-LAST:event_txtAudioCuadernoMouseClicked
 
     /**
      * @param args the command line arguments

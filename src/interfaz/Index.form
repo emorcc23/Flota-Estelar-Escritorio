@@ -378,6 +378,10 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreNuevoMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreNuevoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUsuarioNuevo">
               <Properties>
@@ -395,6 +399,7 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtUsuarioNuevoMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioNuevoActionPerformed"/>
               </Events>
             </Component>
@@ -413,6 +418,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtPassNuevoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUser">
               <Properties>
@@ -429,6 +437,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtUserMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -523,6 +534,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtPassMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -619,6 +633,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Capit&#xe1;n de la Nave *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtCapitanNaveMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreNave">
               <Properties>
@@ -630,6 +647,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Nombre de la Nave *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreNaveMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMatriculaNave">
               <Properties>
@@ -641,6 +661,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Matr&#xed;cula de la Nave *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMatriculaNaveMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTipoNave">
               <Properties>
@@ -652,6 +675,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Tipo de la nave *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTipoNaveMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnRegistrarNave">
               <Properties>
@@ -812,6 +838,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Nombre del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtGeneroTripulante">
               <Properties>
@@ -823,6 +852,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  G&#xe9;nero del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtGeneroTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtOrigenTripulante">
               <Properties>
@@ -834,6 +866,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Origen del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtOrigenTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTipoTripulante">
               <Properties>
@@ -845,6 +880,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Edad del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTipoTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnRegistrarTripulante">
               <Properties>
@@ -875,6 +913,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Cargo del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtCargoTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtExperienciaTripulante">
               <Properties>
@@ -886,6 +927,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Experiencia del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtExperienciaTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtRazaTripulante">
               <Properties>
@@ -897,6 +941,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Raza del tripulante *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtRazaTripulanteMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboNaveTripulante">
               <Properties>
@@ -1013,6 +1060,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Nombre de la misi&#xf3;n *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreMisionMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnRegistrarMision">
               <Properties>
@@ -1052,6 +1102,9 @@
                     <Property name="rows" type="int" value="5"/>
                     <Property name="text" type="java.lang.String" value="  Introduce aqu&#xed; una breve descripci&#xf3;n de la misi&#xf3;n *&#xa;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDescripcionMisionMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1199,6 +1252,9 @@
                     <Property name="rows" type="int" value="5"/>
                     <Property name="text" type="java.lang.String" value="  Introduce aqu&#xed; una breve descripci&#xf3;n del cuaderno *&#xa;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDescripcionCuadernoMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1233,6 +1289,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Fecha de la misi&#xf3;n *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFechaCuadernoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtAudioCuaderno">
               <Properties>
@@ -1244,6 +1303,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Audio del cuaderno *"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtAudioCuadernoMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -2836,7 +2898,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane11" pref="482" max="32767" attributes="0"/>
+                          <Component id="jScrollPane11" pref="582" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2857,7 +2919,7 @@
                               <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtTipoSeleccionado" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace pref="111" max="32767" attributes="0"/>
                               <Component id="btnActualizarNaveRegistrada" min="-2" pref="55" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
@@ -2981,6 +3043,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtCapitanSeleccionadoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreSeleccionado">
               <Properties>
@@ -2991,6 +3056,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreSeleccionadoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMatriculaSeleccionado">
               <Properties>
@@ -3001,6 +3069,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMatriculaSeleccionadoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTipoSeleccionado">
               <Properties>
@@ -3011,6 +3082,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTipoSeleccionadoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel22">
               <Properties>
@@ -3022,6 +3096,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtIdNaveSeleccionada">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Euphemia" size="15" style="0"/>
                 </Property>
@@ -3029,6 +3104,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtIdNaveSeleccionadaMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -3272,6 +3350,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtIdTripulanteSeleccionado">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Euphemia" size="15" style="0"/>
                         </Property>
@@ -3279,6 +3358,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtIdTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel25">
                       <Properties>
@@ -3297,6 +3379,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel26">
                       <Properties>
@@ -3315,6 +3400,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtCargoTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
@@ -3333,6 +3421,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtGeneroTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtExperienciaTripulanteSeleccionado">
                       <Properties>
@@ -3343,6 +3434,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtExperienciaTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel28">
                       <Properties>
@@ -3361,6 +3455,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtOrigenTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel29">
                       <Properties>
@@ -3387,6 +3484,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtRazaTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel31">
                       <Properties>
@@ -3405,6 +3505,9 @@
                           <Color blue="70" green="70" red="70" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtEdadTripulanteSeleccionadoMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel32">
                       <Properties>
@@ -3639,6 +3742,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreMisionSeleccionadoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel37">
               <Properties>
@@ -3650,6 +3756,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtIdMisionSeleccionada">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Euphemia" size="15" style="0"/>
                 </Property>
@@ -3657,6 +3764,9 @@
                   <Color blue="70" green="70" red="70" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtIdMisionSeleccionadaMouseClicked"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane15">
               <AuxValues>
@@ -3676,6 +3786,9 @@
                     </Property>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDescripcionMisionSeleccionadaMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3919,6 +4032,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtIdCuadernoRegistrado">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Euphemia" size="15" style="0"/>
                 </Property>
