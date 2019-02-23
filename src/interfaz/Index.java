@@ -27,23 +27,394 @@ public class Index extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBotonesArriba = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnAreaUsuarios = new javax.swing.JButton();
+        btnNave = new javax.swing.JButton();
+        btnTripulante = new javax.swing.JButton();
+        btnMision = new javax.swing.JButton();
+        btnCuaderno = new javax.swing.JButton();
+        panelBotonesAbajo = new javax.swing.JPanel();
+        iconGmail = new javax.swing.JLabel();
+        iconLinkedin = new javax.swing.JLabel();
+        iconEscuela = new javax.swing.JLabel();
+        iconTrabajo = new javax.swing.JLabel();
+        panelCentro = new javax.swing.JPanel();
+        subPanelUsuario = new javax.swing.JPanel();
+        btnCerrarSesion = new javax.swing.JButton();
+        subPanelNave = new javax.swing.JPanel();
+        btnSubAnadirNave = new javax.swing.JButton();
+        btnSubListarNave = new javax.swing.JButton();
+        btnSubActualizarNave = new javax.swing.JButton();
+        btnSubEliminarNave = new javax.swing.JButton();
+        subPanelTripulante = new javax.swing.JPanel();
+        btnSubAnadirTripulante = new javax.swing.JButton();
+        btnSubListarTripulante = new javax.swing.JButton();
+        btnSubActualizarTripulante = new javax.swing.JButton();
+        btnSubEliminarTripulante = new javax.swing.JButton();
+        subPanelMision = new javax.swing.JPanel();
+        btnSubAnadirMision = new javax.swing.JButton();
+        btnSubListarMision = new javax.swing.JButton();
+        btnSubActualizarMision = new javax.swing.JButton();
+        btnSubEliminarMision = new javax.swing.JButton();
+        subPanelCuaderno = new javax.swing.JPanel();
+        btnSubAnadirCuaderno = new javax.swing.JButton();
+        btnSubListarCuaderno = new javax.swing.JButton();
+        btnSubActualizarCuaderno = new javax.swing.JButton();
+        btnSubEliminarCuaderno = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flota Estelar DE V3");
+        setBackground(new java.awt.Color(153, 153, 153));
+        setMaximumSize(new java.awt.Dimension(1225, 650));
+        setMinimumSize(new java.awt.Dimension(1225, 650));
         setResizable(false);
+
+        panelBotonesArriba.setBackground(new java.awt.Color(250, 250, 250));
+        panelBotonesArriba.setMaximumSize(new java.awt.Dimension(1250, 47));
+        panelBotonesArriba.setMinimumSize(new java.awt.Dimension(1250, 47));
+
+        jLabel1.setBackground(new java.awt.Color(250, 250, 250));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/icon-logo.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("Flota Estelar DE");
+
+        btnAreaUsuarios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAreaUsuarios.setText("Área de usuarios");
+        btnAreaUsuarios.setContentAreaFilled(false);
+        btnAreaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAreaUsuariosActionPerformed(evt);
+            }
+        });
+
+        btnNave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNave.setText("Naves");
+        btnNave.setContentAreaFilled(false);
+        btnNave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNaveActionPerformed(evt);
+            }
+        });
+
+        btnTripulante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnTripulante.setText("Tripulantes");
+        btnTripulante.setContentAreaFilled(false);
+        btnTripulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTripulanteActionPerformed(evt);
+            }
+        });
+
+        btnMision.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMision.setText("Misiones");
+        btnMision.setContentAreaFilled(false);
+        btnMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMisionActionPerformed(evt);
+            }
+        });
+
+        btnCuaderno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCuaderno.setText("Cuadernos de bitácora");
+        btnCuaderno.setContentAreaFilled(false);
+        btnCuaderno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuadernoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBotonesArribaLayout = new javax.swing.GroupLayout(panelBotonesArriba);
+        panelBotonesArriba.setLayout(panelBotonesArribaLayout);
+        panelBotonesArribaLayout.setHorizontalGroup(
+            panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonesArribaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAreaUsuarios)
+                .addGap(58, 58, 58)
+                .addComponent(btnNave)
+                .addGap(97, 97, 97)
+                .addComponent(btnTripulante)
+                .addGap(97, 97, 97)
+                .addComponent(btnMision)
+                .addGap(105, 105, 105)
+                .addComponent(btnCuaderno)
+                .addGap(48, 48, 48))
+        );
+        panelBotonesArribaLayout.setVerticalGroup(
+            panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonesArribaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addGroup(panelBotonesArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAreaUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        panelBotonesAbajo.setBackground(new java.awt.Color(250, 250, 250));
+        panelBotonesAbajo.setMaximumSize(new java.awt.Dimension(1250, 47));
+        panelBotonesAbajo.setMinimumSize(new java.awt.Dimension(1250, 47));
+        panelBotonesAbajo.setPreferredSize(new java.awt.Dimension(1250, 47));
+        panelBotonesAbajo.setLayout(null);
+
+        iconGmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/logo-gmail.png"))); // NOI18N
+        panelBotonesAbajo.add(iconGmail);
+        iconGmail.setBounds(580, 10, 23, 20);
+
+        iconLinkedin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/linkedin-logo.png"))); // NOI18N
+        panelBotonesAbajo.add(iconLinkedin);
+        iconLinkedin.setBounds(610, 10, 23, 23);
+
+        iconEscuela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/graduacion-de-la-universidad.png"))); // NOI18N
+        panelBotonesAbajo.add(iconEscuela);
+        iconEscuela.setBounds(640, 10, 23, 23);
+
+        iconTrabajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/maletin-de-trabajo.png"))); // NOI18N
+        panelBotonesAbajo.add(iconTrabajo);
+        iconTrabajo.setBounds(670, 10, 23, 23);
+
+        panelCentro.setBackground(new java.awt.Color(153, 153, 153));
+        panelCentro.setMaximumSize(new java.awt.Dimension(1250, 568));
+        panelCentro.setMinimumSize(new java.awt.Dimension(1250, 568));
+        panelCentro.setPreferredSize(new java.awt.Dimension(1250, 568));
+        panelCentro.setLayout(null);
+
+        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.setContentAreaFilled(false);
+        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout subPanelUsuarioLayout = new javax.swing.GroupLayout(subPanelUsuario);
+        subPanelUsuario.setLayout(subPanelUsuarioLayout);
+        subPanelUsuarioLayout.setHorizontalGroup(
+            subPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(51, 51, 51))
+        );
+        subPanelUsuarioLayout.setVerticalGroup(
+            subPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+
+        panelCentro.add(subPanelUsuario);
+        subPanelUsuario.setBounds(300, 0, 127, 23);
+
+        btnSubAnadirNave.setText("Registrar una nave");
+        btnSubAnadirNave.setContentAreaFilled(false);
+        btnSubAnadirNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubListarNave.setText("Listar todas las naves");
+        btnSubListarNave.setContentAreaFilled(false);
+        btnSubListarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubActualizarNave.setText("Actualizar una nave");
+        btnSubActualizarNave.setContentAreaFilled(false);
+        btnSubActualizarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubEliminarNave.setText("Eliminar una nave");
+        btnSubEliminarNave.setContentAreaFilled(false);
+        btnSubEliminarNave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout subPanelNaveLayout = new javax.swing.GroupLayout(subPanelNave);
+        subPanelNave.setLayout(subPanelNaveLayout);
+        subPanelNaveLayout.setHorizontalGroup(
+            subPanelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelNaveLayout.createSequentialGroup()
+                .addGroup(subPanelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSubAnadirNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSubListarNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSubActualizarNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSubEliminarNave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(161, 161, 161))
+        );
+        subPanelNaveLayout.setVerticalGroup(
+            subPanelNaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelNaveLayout.createSequentialGroup()
+                .addComponent(btnSubAnadirNave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubListarNave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubActualizarNave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubEliminarNave))
+        );
+
+        panelCentro.add(subPanelNave);
+        subPanelNave.setBounds(490, 0, 130, 110);
+
+        btnSubAnadirTripulante.setText("Registrar un tripulante");
+        btnSubAnadirTripulante.setContentAreaFilled(false);
+        btnSubAnadirTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubListarTripulante.setText("Listar todos los tripulantes");
+        btnSubListarTripulante.setContentAreaFilled(false);
+        btnSubListarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubActualizarTripulante.setText("Actualizar un tripulante");
+        btnSubActualizarTripulante.setContentAreaFilled(false);
+        btnSubActualizarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubEliminarTripulante.setText("Eliminar un tripulante");
+        btnSubEliminarTripulante.setContentAreaFilled(false);
+        btnSubEliminarTripulante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout subPanelTripulanteLayout = new javax.swing.GroupLayout(subPanelTripulante);
+        subPanelTripulante.setLayout(subPanelTripulanteLayout);
+        subPanelTripulanteLayout.setHorizontalGroup(
+            subPanelTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSubAnadirTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubListarTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubActualizarTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubEliminarTripulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        subPanelTripulanteLayout.setVerticalGroup(
+            subPanelTripulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelTripulanteLayout.createSequentialGroup()
+                .addComponent(btnSubAnadirTripulante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubListarTripulante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubActualizarTripulante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubEliminarTripulante))
+        );
+
+        panelCentro.add(subPanelTripulante);
+        subPanelTripulante.setBounds(850, 0, 159, 110);
+
+        btnSubAnadirMision.setText("Registrar una misión");
+        btnSubAnadirMision.setContentAreaFilled(false);
+        btnSubAnadirMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubListarMision.setText("Listar todas las misiones");
+        btnSubListarMision.setContentAreaFilled(false);
+        btnSubListarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubActualizarMision.setText("Actualizar una misión");
+        btnSubActualizarMision.setContentAreaFilled(false);
+        btnSubActualizarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubEliminarMision.setText("Eliminar una misión");
+        btnSubEliminarMision.setContentAreaFilled(false);
+        btnSubEliminarMision.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout subPanelMisionLayout = new javax.swing.GroupLayout(subPanelMision);
+        subPanelMision.setLayout(subPanelMisionLayout);
+        subPanelMisionLayout.setHorizontalGroup(
+            subPanelMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSubAnadirMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubListarMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubActualizarMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubEliminarMision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        subPanelMisionLayout.setVerticalGroup(
+            subPanelMisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelMisionLayout.createSequentialGroup()
+                .addComponent(btnSubAnadirMision)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubListarMision)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubActualizarMision)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubEliminarMision))
+        );
+
+        panelCentro.add(subPanelMision);
+        subPanelMision.setBounds(1040, 0, 147, 110);
+
+        btnSubAnadirCuaderno.setText("Registrar un cuaderno");
+        btnSubAnadirCuaderno.setContentAreaFilled(false);
+        btnSubAnadirCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubListarCuaderno.setText("Listar todos los cuadernos");
+        btnSubListarCuaderno.setContentAreaFilled(false);
+        btnSubListarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubActualizarCuaderno.setText("Actualizar un cuaderno");
+        btnSubActualizarCuaderno.setContentAreaFilled(false);
+        btnSubActualizarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnSubEliminarCuaderno.setText("Eliminar un cuaderno");
+        btnSubEliminarCuaderno.setContentAreaFilled(false);
+        btnSubEliminarCuaderno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout subPanelCuadernoLayout = new javax.swing.GroupLayout(subPanelCuaderno);
+        subPanelCuaderno.setLayout(subPanelCuadernoLayout);
+        subPanelCuadernoLayout.setHorizontalGroup(
+            subPanelCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSubAnadirCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubListarCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubActualizarCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSubEliminarCuaderno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        subPanelCuadernoLayout.setVerticalGroup(
+            subPanelCuadernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelCuadernoLayout.createSequentialGroup()
+                .addComponent(btnSubAnadirCuaderno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubListarCuaderno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubActualizarCuaderno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubEliminarCuaderno))
+        );
+
+        panelCentro.add(subPanelCuaderno);
+        subPanelCuaderno.setBounds(660, 0, 157, 110);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1030, Short.MAX_VALUE)
+            .addComponent(panelBotonesArriba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBotonesAbajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCentro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBotonesArriba, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBotonesAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTripulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTripulanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTripulanteActionPerformed
+
+    private void btnNaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNaveActionPerformed
+
+    private void btnAreaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAreaUsuariosActionPerformed
+
+    private void btnMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMisionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMisionActionPerformed
+
+    private void btnCuadernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuadernoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCuadernoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +452,41 @@ public class Index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAreaUsuarios;
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCuaderno;
+    private javax.swing.JButton btnMision;
+    private javax.swing.JButton btnNave;
+    private javax.swing.JButton btnSubActualizarCuaderno;
+    private javax.swing.JButton btnSubActualizarMision;
+    private javax.swing.JButton btnSubActualizarNave;
+    private javax.swing.JButton btnSubActualizarTripulante;
+    private javax.swing.JButton btnSubAnadirCuaderno;
+    private javax.swing.JButton btnSubAnadirMision;
+    private javax.swing.JButton btnSubAnadirNave;
+    private javax.swing.JButton btnSubAnadirTripulante;
+    private javax.swing.JButton btnSubEliminarCuaderno;
+    private javax.swing.JButton btnSubEliminarMision;
+    private javax.swing.JButton btnSubEliminarNave;
+    private javax.swing.JButton btnSubEliminarTripulante;
+    private javax.swing.JButton btnSubListarCuaderno;
+    private javax.swing.JButton btnSubListarMision;
+    private javax.swing.JButton btnSubListarNave;
+    private javax.swing.JButton btnSubListarTripulante;
+    private javax.swing.JButton btnTripulante;
+    private javax.swing.JLabel iconEscuela;
+    private javax.swing.JLabel iconGmail;
+    private javax.swing.JLabel iconLinkedin;
+    private javax.swing.JLabel iconTrabajo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel panelBotonesAbajo;
+    private javax.swing.JPanel panelBotonesArriba;
+    private javax.swing.JPanel panelCentro;
+    private javax.swing.JPanel subPanelCuaderno;
+    private javax.swing.JPanel subPanelMision;
+    private javax.swing.JPanel subPanelNave;
+    private javax.swing.JPanel subPanelTripulante;
+    private javax.swing.JPanel subPanelUsuario;
     // End of variables declaration//GEN-END:variables
 }
